@@ -1,11 +1,12 @@
 \documentclass{amsart}
-\usepackage[margin=1in]{geometry}
+\usepackage{geometry}
 
 \usepackage{amsmath, amssymb, latexsym}
 \usepackage{tikz}
 \usepackage{tikz-cd}
 \usepackage{pgflibraryarrows}
 \usepackage{pgflibrarysnakes}
+\usepackage{color}
 
 \usepackage[draft]{say}
 \newcommand{\sayER}[1]{\say[ER]{\color{blue}{\bf ER:}\;#1}}
@@ -37,6 +38,8 @@
 \begin{document}
   \maketitle
 
+  \sayDR{This is a nice utility for commenting.}
+
   \section{Introduction}
   Quiver Grassmannians are projective varieties parametrizing subrepresentations of a given quiver representation.
   This gives a direct generalization of the standard Grassmannians of linear subspaces in a vector space but where the geometry behind linear transformations between such linear spaces is taken into consideration.
@@ -44,7 +47,7 @@
   Unfortunately, in such an endeavor, it would be hopeless to expect a uniform description of this geometry since every projective variety can be realized as an appropriate quiver Grassmannian \cite{reineke}.
   
   We therefore restrict in this note to the well-studied example of the Kronecker quiver with two vertices and two parallel arrows as an initial proof of concept.
-  In a subsequent work, we will utilize the results of \cite{rupel-weist} to extend our approach here to the Grassmannians of subrepresentations for the directly generalized $n$-Kronecker quivers (with an arbitrary number $n$ of parallel arrows between the pair of vertices); this simple case is already rich enough to encode the geometry of arbitrary projective varieties and so we restrict there and here to certain special representations with a more uniform geometric structure.
+  In a subsequent work, we will utilize the results of \cite{rupel-weist} to extend our approach here to the Grassmannians of subrepresentations for the directly generalized $n$-Kronecker quivers (with an arbitrary number $n$ of parallel arrows between the pair of vertices); this simple case is already rich enough to encode the geometry of arbitrary projective varieties \sayDR{ToDo: Add a reference to Ringel} and so we restrict there and here to certain special representations with a more uniform geometric structure.
 
   In the 2-Kronecker case, we further restrict to the case of indecomposable representations, though with the help of Caldero-Chapoton fibrations (c.f. Section~\ref{???}) this restriction is easily removed.
   These quiver Grassmannians have been extensively studied, in the process of constructing our main results we reproduce the cell decompositions obtained by Cerulli Irelli and Esposito \cite{cerulli irelli-esposito}, albeit using very different methods which allow us to deduce an explicit description of the closures of these affine cells as unions of such cells.
@@ -53,7 +56,7 @@
   This provides the essential tool we will use for understanding cell closures.
 
   \section{Pl\"ucker Coordinate Parametrization of Standard Schubert Cells}
-  ToDo: Describe Pl\"ucker embedding of Grassmannians
+  \sayDR{ToDo: Describe Pl\"ucker embedding of Grassmannians}
 
   \section{Representations of the 2-Kronecker Quiver}
 
