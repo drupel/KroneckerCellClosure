@@ -13,22 +13,28 @@
 \newcommand{\sayDR}[1]{\say[DR]{\color{red}{\bf DR:}\;#1}}
 
 \newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{example}[theorem]{Example}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{remark}[theorem]{Remark}
 
 \numberwithin{equation}{section}
 
+\renewcommand{\AA}{\mathbb{A}}
 \newcommand{\CC}{\mathbb{C}}
 \newcommand{\PP}{\mathbb{P}}
 \newcommand{\ZZ}{\mathbb{Z}}
-\newcommand{\Hom}{\operatorname{Hom}}
-\newcommand{\Span}{\operatorname{span}}
+
 \newcommand{\bfe}{\mathbf{e}}
 \newcommand{\bff}{\mathbf{f}}
 \newcommand{\bfg}{\mathbf{g}}
-\newcommand{\udim}{\underline{\dim}\,}
 
+\newcommand{\cC}{\mathcal{C}}
+
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\Span}{\operatorname{span}}
+
+\newcommand{\udim}{\underline{\dim}\,}
 \newcommand{\into}{\hookrightarrow}
 
 \title{2-Kronecker Quiver Grassmannians}
@@ -40,25 +46,42 @@
 
   \sayDR{This is a nice utility for commenting.}
 
-  \section{Introduction}
+\section{Introduction}
   Quiver Grassmannians are projective varieties parametrizing subrepresentations of a given quiver representation.
-  This gives a direct generalization of the standard Grassmannians of linear subspaces in a vector space but where the geometry behind linear transformations between such linear spaces is taken into consideration.
+  This provides a direct generalization of the standard Grassmannians of linear subspaces in a vector space in which the geometry behind linear transformations between such linear spaces is taken into consideration.
   Our goal in this project is to begin making explicit the geometry of these spaces.
   Unfortunately, in such an endeavor, it would be hopeless to expect a uniform description of this geometry since every projective variety can be realized as an appropriate quiver Grassmannian \cite{reineke}.
   
-  We therefore restrict in this note to the well-studied example of the Kronecker quiver with two vertices and two parallel arrows as an initial proof of concept.
+  We therefore restrict in this note to the well-studied example of the \emph{Kronecker quiver} with two vertices and two parallel arrows as an initial proof of concept.
   In a subsequent work, we will utilize the results of \cite{rupel-weist} to extend our approach here to the Grassmannians of subrepresentations for the directly generalized $n$-Kronecker quivers (with an arbitrary number $n$ of parallel arrows between the pair of vertices); this simple case is already rich enough to encode the geometry of arbitrary projective varieties \sayDR{ToDo: Add a reference to Ringel} and so we restrict there and here to certain special representations with a more uniform geometric structure.
 
   In the 2-Kronecker case, we further restrict to the case of indecomposable representations, though with the help of Caldero-Chapoton fibrations (c.f. Section~\ref{???}) this restriction is easily removed.
-  These quiver Grassmannians have been extensively studied, in the process of constructing our main results we reproduce the cell decompositions obtained by Cerulli Irelli and Esposito \cite{cerulli irelli-esposito}, albeit using very different methods which allow us to deduce an explicit description of the closures of these affine cells as unions of such cells.
+  These quiver Grassmannians have been extensively studied, in the process of constructing our main results we reproduce the cell decompositions obtained by Cerulli Irelli and Esposito \cite{cerulli irelli-esposito}, albeit using very different methods which allow us to deduce an explicit description of the closures of these affine cells.
+  Unfortunately, this also demonstrates that this cellular decomposition does not provide the quiver Grassmannians with the structure of a CW-complex.
+  However, this does become the case after a mild refinement of the cells according to isomorphism type of the subrepresentations within the cell.  
 
   Our approach builds from the explicit description of Pl\"ucker relations for quiver Grassmannians developed by Lorscheid and Weist \cite{lorscheid-weist} which we utilize to give an explicit parametrization of the affine cells in such cell decompositions.
   This provides the essential tool we will use for understanding cell closures.
 
-  \section{Pl\"ucker Coordinate Parametrization of Standard Schubert Cells}
+\section{Standard Grassmannians}
+
+  \subsection{Pl\"ucker Embedding}
+
+  \begin{equation}
+    \sum_{i\in I'\setminus I} (-1)^{\epsilon(i,I)} \Delta_{I\cup\{i\}} \Delta_{I'\setminus\{i\}}=0
+  \end{equation}
+
+  \subsection{Pl\"ucker Coordinate Parametrization of Standard Schubert Cells}
   \sayDR{ToDo: Describe Pl\"ucker embedding of Grassmannians}
 
-  \section{Representations of the 2-Kronecker Quiver}
+  \begin{lemma}
+    Let $V$ be a vector space and $W\subset V$ a subspace.
+    There is an induced closed embedding $Gr_e(W)\subset Gr_e(V)$.
+    If, in a chosen basis, $W$ forms the initial coordinate subspace of $V$, then the image of $Gr_e(W)$ inside $Gr_e(V)$ is a union of Schubert cells.
+  \end{lemma}
+  As a result, we will abuse notation slightly and remain ambiguous about the superset for a collection indices $S$ labeling a Schubert cell $\AA_S$. 
+
+\section{Representations of the 2-Kronecker Quiver}
 
   Let $Q=1\substack{\longleftarrow\\\longleftarrow} 2$ be the 2-Kronecker quiver with arrows $Q_1=\{\alpha,\beta\}$.
   Write $W=\langle\alpha,\beta\rangle$ for the free group generated by the arrows of $Q$.
@@ -121,303 +144,309 @@
   Note that $Gr_\bfe(P_k)$ is naturally considered as a closed subvariety of the product $Gr_{e_1}(\CC^k)\times Gr_{e_2}(\CC^{k-1})$.
   We aim to understand the geometry of these \emph{quiver Grassmannians} $Gr_\bfe(P_k)$.
   Our main observation is that the basis of $P_k$ induced by its lift $\widetilde P_k$ to the universal cover of $Q$ provides a reasonable compatibility between the geometry of $Gr_\bfe(P_k)$ and the associated standard Schubert decomposition of $Gr_{e_1}(\CC^k)\times Gr_{e_2}(\CC^{k-1})$.
+  More precisely, every affine cell in $Gr_\bfe(P_k)$ embeds into a product of standard Schubert cells from $Gr_{e_1}(\CC^k)\times Gr_{e_2}(\CC^{k-1})$, but only products satisfying a compatibility condition appear in this way.
 
-  \section{Cell Decompositions}
+\section{Cell Decompositions}
   Here we describe two approaches to parametrizing the affine cells in a cell decomposition of $Gr_\bfe(P_k)$.
   Unfortunately, neither of these descriptions offers a transparent avenue for computing closures of cells.
   However, each one points to important ideas needed in our study.
 
   \subsection{Description via Torus Actions}
-  The results of this section can be found in \cite{cerulli irelli-esposito}, we give an independent presentation for convenience of the reader and to introduce useful notation.
-
-  Define a $\CC^*$-action on $P_k$ by $z.v_{k,t}=z^{-t}v_{k,t}$ for $t\in[1,2k-1]$.
-  \begin{lemma}
-    This induces a $\CC^*$-action on $Gr_\bfe(P_k)$.
-    The fixed points of this action are precisely those subrepresentations of $P_k$ induced by subrepresentations of its lift $\widetilde P_k$ to the universal cover of $Q$.
-    These in turn are naturally in bijection with successor-closed subsets of the support quiver of $\widetilde P_k$ with $e_1$ sink vertices and $e_2$ source vertices.
-  \end{lemma}
-  \begin{proof}
-    The $\CC^*$-action on $P_k$ induces an action on $Gr_{e_1}(\CC^k)\times Gr_{e_2}(\CC^{k-1})$, we claim that $Gr_\bfe(P_k)\subseteq Gr_{e_1}(\CC^k)\times Gr_{e_2}(\CC^{k-1})$ is invariant under this action.
-    Indeed, for $E\in Gr_\bfe(P_k)$ and $x_2\in E_2$, we may write $x_2=\sum\limits_{\text{$t$ even}} c_t v_{k,t}$.
-    Then for $z\in\CC^*$, we have 
-    \[\alpha(z.x_2)=\sum\limits_{\text{$t$ even}} c_t \alpha(z.v_{k,t})=\sum\limits_{\text{$t$ even}} c_t z^{-t}\alpha(v_{k,t})=z^{-1}\sum\limits_{\text{$t$ even}} c_t z.\alpha(v_{k,t})=z^{-1} \big(z.\alpha(x_2)\big)\in z.E_1\]
-    with a similar calculation holding for $\beta$.
-    This gives the first claim that $Gr_\bfe(P_k)$ is stable under the action.
-
-    A point of $Gr_{e_1}(\CC^k)\times Gr_{e_2}(\CC^{k-1})$ is fixed by the $\CC^*$-action precisely when it consists of a pair $(E_1,E_2)$ of coordinate subspaces (with respect to the basis $\{v_{k,t}\}$ of $P_k$), i.e.\ they are described combinatorially via a pair of subsets $S_1\subseteq\{1\le t\le 2k-1:\text{$t$ odd}\}$ and $S_2\subseteq\{1\le t\le 2k-1:\text{$t$ even}\}$.
-    In particular, these pairs naturally give rise to representations of $\widetilde Q$.
-    Such a pair gives a fixed point inside $Gr_\bfe(P_k)$ precisely when it defines a subrepresentation of $P_k$, namely when $\alpha(E_2),\beta(E_2)\subseteq E_1$, or combinatorially when $\{t-1,t+1:t\in S_2\}\subseteq S_1$, that is when this determines a subrepresentation of $\widetilde P_k$.
-
-    The combinatorial condition above is precisely the condition of being a successor-closed subset of the support quiver of $\widetilde P_k$.
-  \end{proof}
-  
-  Write $E_{S_1,S_2}\in Gr_\bfe(P_k)$ for the fixed point associated to the successor-closed subset $S_1\sqcup S_2$ of the support quiver of $\widetilde P_k$.
-  The \emph{attractor cell} of this fixed point is the set $A_{S_1,S_2}:=\{ E\in Gr_\bfe(P_k) : \lim\limits_{z\to 0} z.E=E_{S_1,S_2} \}$.
-  More precisely, we may parametrize $A_{S_1,S_2}$ as the set of subrepresentations $E\subseteq P_k$ having the following form:
-  \[ E_2 = \Span\{x_{k,t}:t\in S_2, x_{k,t}\in v_{k,t}+\bigoplus\limits_{\substack{t'<t\\ \text{$t'$ even}\\ t'\notin S_2}} \CC v_{k,t'} \} \]
-  and
-  \[ E_1 = \big(\alpha(E_2)+\beta(E_2)\big)\oplus\Span\{x_{k,t}:t\in S_1\setminus(\alpha(S_2)\cup\beta(S_2)), x_{k,t}\in v_{k,t}+\bigoplus\limits_{\substack{t'<t\\ \text{$t'$ odd}\\ t'\notin S_1}} \CC v_{k,t'} \}. \]
-  Since the fixed points are isolated, we may apply the results of Bia\l{}ynicki-Birula to get a decomposition of $Gr_\bfe(P_k)$ into the affine spaces $A_{S_1,S_2}$, i.e.\ we have the decomposition 
-  \[Gr_\bfe(P_k)=\bigsqcup_{S_1\sqcup S_2} A_{S_1,S_2}.\]
-  Our goal is to compute the closures of the cells $A_{S_1,S_2}$ inside $Gr_\bfe(P_k)$.
-
-  \begin{remark}
-    The parametrization giving the subspaces $E_2$ inside $A_{S_1,S_2}$ is precisely the standard parametrization of the Schubert cell inside $Gr_{e_2}(\CC^{k-1})$ corresponding to the subset $S_2$.
-  \end{remark}
-
+    The results of this section can be found in \cite{cerulli irelli-esposito}, we give an independent presentation for convenience of the reader and to introduce useful notation.
+ 
+    Define a $\CC^*$-action on $P_k$ by $z.v_{k,t}=z^{-t}v_{k,t}$ for $t\in[1,2k-1]$.
+    \begin{lemma}
+      This induces a $\CC^*$-action on $Gr_\bfe(P_k)$.
+      The fixed points of this action are precisely those subrepresentations of $P_k$ induced by subrepresentations of its lift $\widetilde P_k$ to the universal cover of $Q$.
+      These in turn are naturally in bijection with successor-closed subsets of the support quiver of $\widetilde P_k$ with $e_1$ sink vertices and $e_2$ source vertices.
+    \end{lemma}
+    \begin{proof}
+      The $\CC^*$-action on $P_k$ induces an action on $Gr_{e_1}(\CC^k)\times Gr_{e_2}(\CC^{k-1})$, we claim that $Gr_\bfe(P_k)\subseteq Gr_{e_1}(\CC^k)\times Gr_{e_2}(\CC^{k-1})$ is invariant under this action.
+      Indeed, for $E\in Gr_\bfe(P_k)$ and $x_2\in E_2$, we may write $x_2=\sum\limits_{\text{$t$ even}} c_t v_{k,t}$.
+      Then for $z\in\CC^*$, we have 
+      \[\alpha(z.x_2)=\sum\limits_{\text{$t$ even}} c_t \alpha(z.v_{k,t})=\sum\limits_{\text{$t$ even}} c_t z^{-t}\alpha(v_{k,t})=z^{-1}\sum\limits_{\text{$t$ even}} c_t z.\alpha(v_{k,t})=z^{-1} \big(z.\alpha(x_2)\big)\in z.E_1\]
+      with a similar calculation holding for $\beta$.
+      This gives the first claim that $Gr_\bfe(P_k)$ is stable under the action.
+ 
+      A point of $Gr_{e_1}(\CC^k)\times Gr_{e_2}(\CC^{k-1})$ is fixed by the $\CC^*$-action precisely when it consists of a pair $(E_1,E_2)$ of coordinate subspaces (with respect to the basis $\{v_{k,t}\}$ of $P_k$), i.e.\ they are described combinatorially via a pair of subsets $S_1\subseteq\{1\le t\le 2k-1:\text{$t$ odd}\}$ and $S_2\subseteq\{1\le t\le 2k-1:\text{$t$ even}\}$.
+      In particular, these pairs naturally give rise to representations of $\widetilde Q$.
+      Such a pair gives a fixed point inside $Gr_\bfe(P_k)$ precisely when it defines a subrepresentation of $P_k$, namely when $\alpha(E_2),\beta(E_2)\subseteq E_1$, or combinatorially when $\{t-1,t+1:t\in S_2\}\subseteq S_1$, that is when this determines a subrepresentation of $\widetilde P_k$.
+ 
+      The combinatorial condition above is precisely the condition of being a successor-closed subset of the support quiver of $\widetilde P_k$.
+    \end{proof}
+    
+    Write $E_{S_1}^{S_2}\in Gr_\bfe(P_k)$ for the fixed point associated to the successor-closed subset $S_1\sqcup S_2$ of the support quiver of $\widetilde P_k$.
+    The \emph{attractor cell} of this fixed point is the set $\AA_{S_1}^{S_2}:=\{ E\in Gr_\bfe(P_k) : \lim\limits_{z\to 0} z.E=E_{S_1}^{S_2} \}$.
+    More precisely, we may parametrize $\AA_{S_1}^{S_2}$ as the set of subrepresentations $E\subseteq P_k$ having the following form:
+    \[ E_2 = \Span\{x_{k,t}:t\in S_2, x_{k,t}\in v_{k,t}+\bigoplus\limits_{\substack{t'<t\\ \text{$t'$ even}\\ t'\notin S_2}} \CC v_{k,t'} \} \]
+    and
+    \[ E_1 = \big(\alpha(E_2)+\beta(E_2)\big)\oplus\Span\{x_{k,t}:t\in S_1\setminus(\alpha(S_2)\cup\beta(S_2)), x_{k,t}\in v_{k,t}+\bigoplus\limits_{\substack{t'<t\\ \text{$t'$ odd}\\ t'\notin S_1}} \CC v_{k,t'} \}. \]
+    Since the fixed points are isolated, we may apply the results of Bia\l{}ynicki-Birula to get a decomposition of $Gr_\bfe(P_k)$ into the affine spaces $\AA_{S_1}^{S_2}$, i.e.\ we have the decomposition 
+    \[Gr_\bfe(P_k)=\bigsqcup_{S_1\sqcup S_2} \AA_{S_1}^{S_2}.\]
+    Our goal is to compute the closures of the cells $\AA_{S_1}^{S_2}$ inside $Gr_\bfe(P_k)$.
+ 
+    \begin{remark}
+      Observe that this construction of the cell decomposition of $Gr_\bfe(P_k)$ naturally identifies each attractor cell $\AA_{S_1}^{S_2}$ as a subset of the product $\AA_{S_1}\times \AA_{S_2}$ of standard Schubert cells in $Gr_{e_1}(\CC^k)\times Gr_{e_2}(\CC^{k-1})$.
+      The parametrization giving the subspaces $E_2$ inside $\AA_{S_1}^{S_2}$ is precisely the standard parametrization of the Schubert cell inside $Gr_{e_2}(\CC^{k-1})$ corresponding to the subset $S_2$.
+    \end{remark}
+ 
   \subsection{Description of Cells via Tangent Spaces}
-  \label{sec:tangent parametrization}
-  The tangent space to $Gr_\bfe(P_k)$ at a point $E$ is naturally identified with the space $\Hom(E,P_k/E)$.
-  If $E$ is a $\CC^*$-fixed point, there is an induced $\CC^*$-action on $\Hom(E,P_k/E)$.
-  In this case, we may endow $\Hom(E,P_k/E)$ with a basis of eigenvectors for this action as follows.
+    \label{sec:tangent parametrization}
+    The tangent space to $Gr_\bfe(P_k)$ at a point $E$ is naturally identified with the space $\Hom(E,P_k/E)$.
+    If $E$ is a $\CC^*$-fixed point, there is an induced $\CC^*$-action on $\Hom(E,P_k/E)$.
+    In this case, we may endow $\Hom(E,P_k/E)$ with a basis of eigenvectors for this action as follows.
+ 
+    Let $S_1\sqcup S_2$ be a successor-closed subquiver of the support quiver of $\tilde P_k$ and $E=E_{S_1}^{S_2}\in Gr_\bfe(P_k)$ the corresponding $\CC^*$-fixed point.
+    Since $S_1\sqcup S_2$ is successor-closed, it is not hard to see that the corresponding subquiver $\bar{S}_1\sqcup\bar{S}_2)$ is predecessor-closed for $\bar{S}_1:=\{1\le t\le 2k-1:\text{$t$ odd},t\notin S_1\}$ and $\bar{S}_2:=\{1\le t\le 2k-1:\text{$t$ even},t\notin S_2\}$.
+    As can be seen in \cite[Prop. 2.0.2]{cerulli irelli-esposito}, the vector space $\Hom(E,P_k/E)$ admits a basis $\{f_\gamma\}$ labeled by isomorphisms $\gamma:\Gamma_E\to\Gamma_{P_k/E}$ from a connected predecessor-closed subquiver of $S_1\sqcup S_2$ to a connected successor-closed subquiver of $\bar{S}_1\sqcup\bar{S}_2$.
+ 
+    Observe that the vertices of $\Gamma_E$ are of the form $v_{k,t},v_{k,t+1},\ldots$ for some $t\in[1,2k-1]$ and the vertices of $\Gamma_{P_k/E}$ are of the form $v_{k,t'},v_{k,t'+1},\ldots$ for some $t'\in[1,2k-1]$.
+    The action of $\CC^*$ on the corresponding basis vector $f_\gamma$ of $\Hom(E,P_k/E)$ is given by
+    \[z.f_\gamma=z^{t-t'}f_\gamma.\]
+ 
+    \begin{lemma}
+      Each attractor cell is isomorphic to the positive weight component of the tangent space of its fixed point.
+    \end{lemma}
+ 
+    Therefore, we may parametrize the attractor cell of a $\CC^*$-fixed point $E$ via the standard basis vectors $f_\gamma$ of $\Hom(E,P_k/E)$ for which $t>t'$, i.e. $\gamma$ represents a ``shift to the left'' in the support quiver of $\tilde P_k$.
+ 
+    \begin{example}
+      Let $k=9$ and consider the successor-closed subset $(S_1,S_2)$ of the support quiver of $\tilde P_k$ given by
+      \[S_1=\{3,5,11,13,15,17\}\qquad\text{and}\qquad S_2=\{4,12,14\}\]
+      \[
+        \begin{tikzpicture}
+          \foreach \i in {3,5,11,13,15,17}{
+            \draw[fill=black] (0.5*\i,1) circle (2pt);
+            \node[above] at (0.5*\i,1) {\i};} 
+          \foreach \i in {1,7,9}{
+            \draw[fill=white] (0.5*\i,1) circle (2pt);
+            \node[above] at (0.5*\i,1) {\i};} 
+          \foreach \i in {4,12,14}{
+            \draw[fill=black] (0.5*\i,0) circle (2pt);
+            \draw (0.5*\i,0) -- (0.5*\i-0.5,1);
+            \draw (0.5*\i,0) -- (0.5*\i+0.5,1);
+            \node[below] at (0.5*\i,0) {\i};} 
+          \foreach \i in {2,6,8,10,16}{
+            \draw[fill=white] (0.5*\i,0) circle (2pt);
+            \node[below] at (0.5*\i,0) {\i};} 
+        \end{tikzpicture}
+      \]
+      The possible isomorphisms $\gamma$ with positive weight are given by
+      \[
+        \begin{tikzpicture}
+          \draw[dotted,-stealth] (8.5,1.5) to[out=150,in=30] (0.5,1.5);
+          \draw[dotted,-stealth] (8.5,1.5) to[out=150,in=30] (3.5,1.5);
+          \draw[dotted,-stealth] (8.5,1.5) to[out=150,in=30] (4.5,1.5);
+          \foreach \i in {3,5,11,13,15,17}{
+            \draw[fill=black] (0.5*\i,1) circle (2pt);
+            \node[above] at (0.5*\i,1) {\i};} 
+          \foreach \i in {1,7,9}{
+            \draw[fill=white] (0.5*\i,1) circle (2pt);
+            \node[above] at (0.5*\i,1) {\i};} 
+          \foreach \i in {4,12,14}{
+            \draw[fill=black] (0.5*\i,0) circle (2pt);
+            \draw (0.5*\i,0) -- (0.5*\i-0.5,1);
+            \draw (0.5*\i,0) -- (0.5*\i+0.5,1);
+            \node[below] at (0.5*\i,0) {\i};} 
+          \foreach \i in {2,6,8,10,16}{
+            \draw[fill=white] (0.5*\i,0) circle (2pt);
+            \node[below] at (0.5*\i,0) {\i};} 
+        \end{tikzpicture}
+      \]
+      \[
+        \begin{tikzpicture}
+          \draw[dotted,-stealth] (6.5,1.5) to[out=150,in=30] (3.5,1.5);
+          \draw[dotted,-stealth] (7.5,1.5) to[out=150,in=30] (4.5,1.5);
+          \draw[dotted,-stealth] (6,-0.5) to[out=210,in=-30] (3,-0.5);
+          \draw[dotted,-stealth] (7,-0.5) to[out=210,in=-30] (4,-0.5);
+          \foreach \i in {3,5,11,13,15,17}{
+            \draw[fill=black] (0.5*\i,1) circle (2pt);
+            \node[above] at (0.5*\i,1) {\i};} 
+          \foreach \i in {1,7,9}{
+            \draw[fill=white] (0.5*\i,1) circle (2pt);
+            \node[above] at (0.5*\i,1) {\i};} 
+          \foreach \i in {4,12,14}{
+            \draw[fill=black] (0.5*\i,0) circle (2pt);
+            \draw (0.5*\i,0) -- (0.5*\i-0.5,1);
+            \draw (0.5*\i,0) -- (0.5*\i+0.5,1);
+            \node[below] at (0.5*\i,0) {\i};} 
+          \foreach \i in {2,6,8,10,16}{
+            \draw[fill=white] (0.5*\i,0) circle (2pt);
+            \node[below] at (0.5*\i,0) {\i};} 
+        \end{tikzpicture}
+      \]
+      \[
+        \begin{tikzpicture}
+          \draw[dotted,-stealth] (7.5,1.5) to[out=150,in=30] (3.5,1.5);
+          \draw[dotted,-stealth] (7,-0.5) to[out=210,in=-30] (3,-0.5);
+          \foreach \i in {3,5,11,13,15,17}{
+            \draw[fill=black] (0.5*\i,1) circle (2pt);
+            \node[above] at (0.5*\i,1) {\i};} 
+          \foreach \i in {1,7,9}{
+            \draw[fill=white] (0.5*\i,1) circle (2pt);
+            \node[above] at (0.5*\i,1) {\i};} 
+          \foreach \i in {4,12,14}{
+            \draw[fill=black] (0.5*\i,0) circle (2pt);
+            \draw (0.5*\i,0) -- (0.5*\i-0.5,1);
+            \draw (0.5*\i,0) -- (0.5*\i+0.5,1);
+            \node[below] at (0.5*\i,0) {\i};} 
+          \foreach \i in {2,6,8,10,16}{
+            \draw[fill=white] (0.5*\i,0) circle (2pt);
+            \node[below] at (0.5*\i,0) {\i};} 
+        \end{tikzpicture}
+      \]
+      \[
+        \begin{tikzpicture}
+          \draw[dotted,-stealth] (5.5,1.5) to[out=150,in=30] (3.5,1.5);
+          \draw[dotted,-stealth] (6.5,1.5) to[out=150,in=30] (4.5,1.5);
+          \draw[dotted,-stealth] (6,-0.5) to[out=210,in=-30] (4,-0.5);
+          \draw[dotted,-stealth] (7,-0.5) to[out=210,in=-30] (5,-0.5);
+          \foreach \i in {3,5,11,13,15,17}{
+            \draw[fill=black] (0.5*\i,1) circle (2pt);
+            \node[above] at (0.5*\i,1) {\i};} 
+          \foreach \i in {1,7,9}{
+            \draw[fill=white] (0.5*\i,1) circle (2pt);
+            \node[above] at (0.5*\i,1) {\i};} 
+          \foreach \i in {4,12,14}{
+            \draw[fill=black] (0.5*\i,0) circle (2pt);
+            \draw (0.5*\i,0) -- (0.5*\i-0.5,1);
+            \draw (0.5*\i,0) -- (0.5*\i+0.5,1);
+            \node[below] at (0.5*\i,0) {\i};} 
+          \foreach \i in {2,6,8,10,16}{
+            \draw[fill=white] (0.5*\i,0) circle (2pt);
+            \node[below] at (0.5*\i,0) {\i};} 
+        \end{tikzpicture}
+      \]
+      \[
+        \begin{tikzpicture}
+          \draw[dotted,-stealth] (5.5,1.5) to[out=150,in=30] (4.5,1.5);
+          \draw[dotted,-stealth] (6,-0.5) to[out=210,in=-30] (5,-0.5);
+          \foreach \i in {3,5,11,13,15,17}{
+            \draw[fill=black] (0.5*\i,1) circle (2pt);
+            \node[above] at (0.5*\i,1) {\i};} 
+          \foreach \i in {1,7,9}{
+            \draw[fill=white] (0.5*\i,1) circle (2pt);
+            \node[above] at (0.5*\i,1) {\i};} 
+          \foreach \i in {4,12,14}{
+            \draw[fill=black] (0.5*\i,0) circle (2pt);
+            \draw (0.5*\i,0) -- (0.5*\i-0.5,1);
+            \draw (0.5*\i,0) -- (0.5*\i+0.5,1);
+            \node[below] at (0.5*\i,0) {\i};} 
+          \foreach \i in {2,6,8,10,16}{
+            \draw[fill=white] (0.5*\i,0) circle (2pt);
+            \node[below] at (0.5*\i,0) {\i};} 
+        \end{tikzpicture}
+      \]
+      \[
+        \begin{tikzpicture}
+          \draw[dotted,-stealth] (5.5,1.5) to[out=150,in=30] (0.5,1.5);
+          \draw[dotted,-stealth] (6,-0.5) to[out=210,in=-30] (1,-0.5);
+          \foreach \i in {3,5,11,13,15,17}{
+            \draw[fill=black] (0.5*\i,1) circle (2pt);
+            \node[above] at (0.5*\i,1) {\i};} 
+          \foreach \i in {1,7,9}{
+            \draw[fill=white] (0.5*\i,1) circle (2pt);
+            \node[above] at (0.5*\i,1) {\i};} 
+          \foreach \i in {4,12,14}{
+            \draw[fill=black] (0.5*\i,0) circle (2pt);
+            \draw (0.5*\i,0) -- (0.5*\i-0.5,1);
+            \draw (0.5*\i,0) -- (0.5*\i+0.5,1);
+            \node[below] at (0.5*\i,0) {\i};} 
+          \foreach \i in {2,6,8,10,16}{
+            \draw[fill=white] (0.5*\i,0) circle (2pt);
+            \node[below] at (0.5*\i,0) {\i};} 
+        \end{tikzpicture}
+      \]
+      \[
+        \begin{tikzpicture}
+          \draw[dotted,-stealth] (1.5,1.5) to[out=150,in=30] (0.5,1.5);
+          \draw[dotted,-stealth] (2,-0.5) to[out=210,in=-30] (1,-0.5);
+          \foreach \i in {3,5,11,13,15,17}{
+            \draw[fill=black] (0.5*\i,1) circle (2pt);
+            \node[above] at (0.5*\i,1) {\i};} 
+          \foreach \i in {1,7,9}{
+            \draw[fill=white] (0.5*\i,1) circle (2pt);
+            \node[above] at (0.5*\i,1) {\i};} 
+          \foreach \i in {4,12,14}{
+            \draw[fill=black] (0.5*\i,0) circle (2pt);
+            \draw (0.5*\i,0) -- (0.5*\i-0.5,1);
+            \draw (0.5*\i,0) -- (0.5*\i+0.5,1);
+            \node[below] at (0.5*\i,0) {\i};} 
+          \foreach \i in {2,6,8,10,16}{
+            \draw[fill=white] (0.5*\i,0) circle (2pt);
+            \node[below] at (0.5*\i,0) {\i};} 
+        \end{tikzpicture}
+      \]
+ 
+    \end{example}
 
-  Let $S_1\sqcup S_2$ be a successor-closed subquiver of the support quiver of $\tilde P_k$ and $E_{S_1,S_2}\in Gr_\bfe(P_k)$ the corresponding $\CC^*$-fixed point.
-  Since $S_1\sqcup S_2$ is successor-closed, it is not hard to see that the corresponding subquiver $\bar{S}_1\sqcup\bar{S}_2)$ is predecessor-closed for $\bar{S}_1:=\{1\le t\le 2k-1:\text{$t$ odd},t\notin S_1\}$ and $\bar{S}_2:=\{1\le t\le 2k-1:\text{$t$ even},t\notin S_2\}$.
-  As can be seen in \cite[Prop. 2.0.2]{cerulli irelli-esposito}, the vector space $\Hom(E,P_k/E)$ admits a basis $\{f_\gamma\}$ labeled by isomorphisms $\gamma:\Gamma_E\to\Gamma_{P_k/E}$ from a connected predecessor-closed subquiver of $S_1\sqcup S_2$ to a connected successor-closed subquiver of $\bar{S}_1\sqcup\bar{S}_2$.
-
-  Observe that the vertices of $\Gamma_E$ are of the form $v_{k,t},v_{k,t+1},\ldots$ for some $t\in[1,2k-1]$ and the vertices of $\Gamma_{P_k/E}$ are of the form $v_{k,t'},v_{k,t'+1},\ldots$ for some $t'\in[1,2k-1]$.
-  The action of $\CC^*$ on the corresponding basis vector $f_\gamma$ of $\Hom(E,P_k/E)$ is given by
-  \[z.f_\gamma=z^{t-t'}f_\gamma.\]
-
-  \begin{lemma}
-    Each attractor cell is isomorphic to the positive weight component of the tangent space of its fixed point.
-  \end{lemma}
-
-  Therefore, we may parametrize the attractor cell of a $\CC^*$-fixed point $E$ via the standard basis vectors $f_\gamma$ of $\Hom(E,P_k/E)$ for which $t>t'$, i.e. $\gamma$ represents a ``shift to the left'' in the support quiver of $\tilde P_k$.
-
-  \begin{example}
-    Let $k=9$ and consider the successor-closed subset $(S_1,S_2)$ of the support quiver of $\tilde P_k$ given by
-    \[S_1=\{3,5,11,13,15,17\}\qquad\text{and}\qquad S_2=\{4,12,14\}\]
-    \[
-      \begin{tikzpicture}
-        \foreach \i in {3,5,11,13,15,17}{
-          \draw[fill=black] (0.5*\i,1) circle (2pt);
-          \node[above] at (0.5*\i,1) {\i};} 
-        \foreach \i in {1,7,9}{
-          \draw[fill=white] (0.5*\i,1) circle (2pt);
-          \node[above] at (0.5*\i,1) {\i};} 
-        \foreach \i in {4,12,14}{
-          \draw[fill=black] (0.5*\i,0) circle (2pt);
-          \draw (0.5*\i,0) -- (0.5*\i-0.5,1);
-          \draw (0.5*\i,0) -- (0.5*\i+0.5,1);
-          \node[below] at (0.5*\i,0) {\i};} 
-        \foreach \i in {2,6,8,10,16}{
-          \draw[fill=white] (0.5*\i,0) circle (2pt);
-          \node[below] at (0.5*\i,0) {\i};} 
-      \end{tikzpicture}
-    \]
-    The possible isomorphisms $\gamma$ with positive weight are given by
-    \[
-      \begin{tikzpicture}
-        \draw[dotted,-stealth] (8.5,1.5) to[out=150,in=30] (0.5,1.5);
-        \draw[dotted,-stealth] (8.5,1.5) to[out=150,in=30] (3.5,1.5);
-        \draw[dotted,-stealth] (8.5,1.5) to[out=150,in=30] (4.5,1.5);
-        \foreach \i in {3,5,11,13,15,17}{
-          \draw[fill=black] (0.5*\i,1) circle (2pt);
-          \node[above] at (0.5*\i,1) {\i};} 
-        \foreach \i in {1,7,9}{
-          \draw[fill=white] (0.5*\i,1) circle (2pt);
-          \node[above] at (0.5*\i,1) {\i};} 
-        \foreach \i in {4,12,14}{
-          \draw[fill=black] (0.5*\i,0) circle (2pt);
-          \draw (0.5*\i,0) -- (0.5*\i-0.5,1);
-          \draw (0.5*\i,0) -- (0.5*\i+0.5,1);
-          \node[below] at (0.5*\i,0) {\i};} 
-        \foreach \i in {2,6,8,10,16}{
-          \draw[fill=white] (0.5*\i,0) circle (2pt);
-          \node[below] at (0.5*\i,0) {\i};} 
-      \end{tikzpicture}
-    \]
-    \[
-      \begin{tikzpicture}
-        \draw[dotted,-stealth] (6.5,1.5) to[out=150,in=30] (3.5,1.5);
-        \draw[dotted,-stealth] (7.5,1.5) to[out=150,in=30] (4.5,1.5);
-        \draw[dotted,-stealth] (6,-0.5) to[out=210,in=-30] (3,-0.5);
-        \draw[dotted,-stealth] (7,-0.5) to[out=210,in=-30] (4,-0.5);
-        \foreach \i in {3,5,11,13,15,17}{
-          \draw[fill=black] (0.5*\i,1) circle (2pt);
-          \node[above] at (0.5*\i,1) {\i};} 
-        \foreach \i in {1,7,9}{
-          \draw[fill=white] (0.5*\i,1) circle (2pt);
-          \node[above] at (0.5*\i,1) {\i};} 
-        \foreach \i in {4,12,14}{
-          \draw[fill=black] (0.5*\i,0) circle (2pt);
-          \draw (0.5*\i,0) -- (0.5*\i-0.5,1);
-          \draw (0.5*\i,0) -- (0.5*\i+0.5,1);
-          \node[below] at (0.5*\i,0) {\i};} 
-        \foreach \i in {2,6,8,10,16}{
-          \draw[fill=white] (0.5*\i,0) circle (2pt);
-          \node[below] at (0.5*\i,0) {\i};} 
-      \end{tikzpicture}
-    \]
-    \[
-      \begin{tikzpicture}
-        \draw[dotted,-stealth] (7.5,1.5) to[out=150,in=30] (3.5,1.5);
-        \draw[dotted,-stealth] (7,-0.5) to[out=210,in=-30] (3,-0.5);
-        \foreach \i in {3,5,11,13,15,17}{
-          \draw[fill=black] (0.5*\i,1) circle (2pt);
-          \node[above] at (0.5*\i,1) {\i};} 
-        \foreach \i in {1,7,9}{
-          \draw[fill=white] (0.5*\i,1) circle (2pt);
-          \node[above] at (0.5*\i,1) {\i};} 
-        \foreach \i in {4,12,14}{
-          \draw[fill=black] (0.5*\i,0) circle (2pt);
-          \draw (0.5*\i,0) -- (0.5*\i-0.5,1);
-          \draw (0.5*\i,0) -- (0.5*\i+0.5,1);
-          \node[below] at (0.5*\i,0) {\i};} 
-        \foreach \i in {2,6,8,10,16}{
-          \draw[fill=white] (0.5*\i,0) circle (2pt);
-          \node[below] at (0.5*\i,0) {\i};} 
-      \end{tikzpicture}
-    \]
-    \[
-      \begin{tikzpicture}
-        \draw[dotted,-stealth] (5.5,1.5) to[out=150,in=30] (3.5,1.5);
-        \draw[dotted,-stealth] (6.5,1.5) to[out=150,in=30] (4.5,1.5);
-        \draw[dotted,-stealth] (6,-0.5) to[out=210,in=-30] (4,-0.5);
-        \draw[dotted,-stealth] (7,-0.5) to[out=210,in=-30] (5,-0.5);
-        \foreach \i in {3,5,11,13,15,17}{
-          \draw[fill=black] (0.5*\i,1) circle (2pt);
-          \node[above] at (0.5*\i,1) {\i};} 
-        \foreach \i in {1,7,9}{
-          \draw[fill=white] (0.5*\i,1) circle (2pt);
-          \node[above] at (0.5*\i,1) {\i};} 
-        \foreach \i in {4,12,14}{
-          \draw[fill=black] (0.5*\i,0) circle (2pt);
-          \draw (0.5*\i,0) -- (0.5*\i-0.5,1);
-          \draw (0.5*\i,0) -- (0.5*\i+0.5,1);
-          \node[below] at (0.5*\i,0) {\i};} 
-        \foreach \i in {2,6,8,10,16}{
-          \draw[fill=white] (0.5*\i,0) circle (2pt);
-          \node[below] at (0.5*\i,0) {\i};} 
-      \end{tikzpicture}
-    \]
-    \[
-      \begin{tikzpicture}
-        \draw[dotted,-stealth] (5.5,1.5) to[out=150,in=30] (4.5,1.5);
-        \draw[dotted,-stealth] (6,-0.5) to[out=210,in=-30] (5,-0.5);
-        \foreach \i in {3,5,11,13,15,17}{
-          \draw[fill=black] (0.5*\i,1) circle (2pt);
-          \node[above] at (0.5*\i,1) {\i};} 
-        \foreach \i in {1,7,9}{
-          \draw[fill=white] (0.5*\i,1) circle (2pt);
-          \node[above] at (0.5*\i,1) {\i};} 
-        \foreach \i in {4,12,14}{
-          \draw[fill=black] (0.5*\i,0) circle (2pt);
-          \draw (0.5*\i,0) -- (0.5*\i-0.5,1);
-          \draw (0.5*\i,0) -- (0.5*\i+0.5,1);
-          \node[below] at (0.5*\i,0) {\i};} 
-        \foreach \i in {2,6,8,10,16}{
-          \draw[fill=white] (0.5*\i,0) circle (2pt);
-          \node[below] at (0.5*\i,0) {\i};} 
-      \end{tikzpicture}
-    \]
-    \[
-      \begin{tikzpicture}
-        \draw[dotted,-stealth] (5.5,1.5) to[out=150,in=30] (0.5,1.5);
-        \draw[dotted,-stealth] (6,-0.5) to[out=210,in=-30] (1,-0.5);
-        \foreach \i in {3,5,11,13,15,17}{
-          \draw[fill=black] (0.5*\i,1) circle (2pt);
-          \node[above] at (0.5*\i,1) {\i};} 
-        \foreach \i in {1,7,9}{
-          \draw[fill=white] (0.5*\i,1) circle (2pt);
-          \node[above] at (0.5*\i,1) {\i};} 
-        \foreach \i in {4,12,14}{
-          \draw[fill=black] (0.5*\i,0) circle (2pt);
-          \draw (0.5*\i,0) -- (0.5*\i-0.5,1);
-          \draw (0.5*\i,0) -- (0.5*\i+0.5,1);
-          \node[below] at (0.5*\i,0) {\i};} 
-        \foreach \i in {2,6,8,10,16}{
-          \draw[fill=white] (0.5*\i,0) circle (2pt);
-          \node[below] at (0.5*\i,0) {\i};} 
-      \end{tikzpicture}
-    \]
-    \[
-      \begin{tikzpicture}
-        \draw[dotted,-stealth] (1.5,1.5) to[out=150,in=30] (0.5,1.5);
-        \draw[dotted,-stealth] (2,-0.5) to[out=210,in=-30] (1,-0.5);
-        \foreach \i in {3,5,11,13,15,17}{
-          \draw[fill=black] (0.5*\i,1) circle (2pt);
-          \node[above] at (0.5*\i,1) {\i};} 
-        \foreach \i in {1,7,9}{
-          \draw[fill=white] (0.5*\i,1) circle (2pt);
-          \node[above] at (0.5*\i,1) {\i};} 
-        \foreach \i in {4,12,14}{
-          \draw[fill=black] (0.5*\i,0) circle (2pt);
-          \draw (0.5*\i,0) -- (0.5*\i-0.5,1);
-          \draw (0.5*\i,0) -- (0.5*\i+0.5,1);
-          \node[below] at (0.5*\i,0) {\i};} 
-        \foreach \i in {2,6,8,10,16}{
-          \draw[fill=white] (0.5*\i,0) circle (2pt);
-          \node[below] at (0.5*\i,0) {\i};} 
-      \end{tikzpicture}
-    \]
-
-  \end{example}
-
-  \section{Quiver Pl\"ucker Coordinates}
+\section{Quiver Pl\"ucker Relations}
   Given a totally ordered set $K$, write $\epsilon(k,K)=\#\{k'\in K: k'\le k\}$.
 
-  Consider the embedding $Gr_\bfe(P_k)\into Gr_{e_1}(\CC^k)\times Gr_{e_2}(\CC^{k-1})\into \PP^{k \choose e_1}\times \PP^{k-1 \choose e_2}$ which is the composition of the natural inclusion $Gr_\bfe(P_k)\into Gr_{e_1}(\CC^k)\times Gr_{e_2}(\CC^{k-1})$ with the Pl\"ucker embeddings of the ordinary Grassmannians according to the basis $\{v_{k,1},\cdots,v_{k,2k-1}\}$ of $P_k$.
+  Consider the embedding $Gr_\bfe(P_k)\into Gr_{e_1}(\CC^k)\times Gr_{e_2}(\CC^{k-1})\into \PP^{{k \choose e_1} - 1}\times \PP^{{k-1 \choose e_2} - 1}$ which is the composition of the natural inclusion $Gr_\bfe(P_k)\into Gr_{e_1}(\CC^k)\times Gr_{e_2}(\CC^{k-1})$ with the Pl\"ucker embeddings of the ordinary Grassmannians according to the basis $\{v_{k,1},\cdots,v_{k,2k-1}\}$ of $P_k$.
   Then $Gr_\bfe(P_k)$ may be described explicitly in terms of the Pl\"ucker coordinates 
-  \[[\Delta_I:\Delta_J]_{I\subseteq_{e_1} \{1,3,\ldots,2k-1\}, J\subseteq_{e_2} \{2,4,\ldots,2k-2\}}.\]
+  \[[\Delta_I:\Delta_J]_{I\subseteq_{e_1} \{2\ell-1\}, J\subseteq_{e_2} \{2\ell\}}.\]
   
   Indeed, since $Gr_\bfe(P_k)$ lies inside $Gr_{e_1}(\CC^k)\times Gr_{e_2}(\CC^{k-1})$, the ordinary Pl\"ucker relations must be satisfied:
   \[\sum_{i\in I'\setminus I} (-1)^{\epsilon(i,I)} \Delta_{I\cup\{i\}} \Delta_{I'\setminus\{i\}}=0
     \qquad
     \sum_{j\in J'\setminus J} (-1)^{\epsilon(j,J)} \Delta_{J\cup\{j\}} \Delta_{J'\setminus\{j\}}=0\]
-  for each $I,I'\subseteq\{1,3,\ldots,2k-1\}$ with cardinalities $e_1-1,e_1+1$ respectively and each $J,J'\subseteq\{2,4,\ldots, 2k-2\}$ with cardinalities $e_2-1,e_2+1$ respectively.
+  for each $I,I'\subseteq\{2\ell-1\}$ with cardinalities $e_1-1,e_1+1$ respectively and each $J,J'\subseteq\{2\ell\}$ with cardinalities $e_2-1,e_2+1$ respectively.
   In addition, the \emph{quiver Pl\"ucker relations} must be satisfied \cite{lorscheid-weist}:
   \begin{align}
-    \label{eq:left Plucker} \sum_{j\in \{2,4,\ldots,2k-2\}\setminus J} (-1)^{\epsilon(j-1,I)+\epsilon(j,J)} \Delta_{I\setminus\{j-1\}} \Delta_{J\cup\{j\}}=0,\\
-    \label{eq:right Plucker} \sum_{j\in \{2,4,\ldots,2k-2\}\setminus J} (-1)^{\epsilon(j+1,I)+\epsilon(j,J)} \Delta_{I\setminus\{j+1\}} \Delta_{J\cup\{j\}}=0,
+    \label{eq:left Plucker} \sum_{j\in \{2\ell\}\setminus J} (-1)^{\epsilon(j-1,I)+\epsilon(j,J)} \Delta_{I\setminus\{j-1\}} \Delta_{J\cup\{j\}}=0,\\
+    \label{eq:right Plucker} \sum_{j\in \{2\ell\}\setminus J} (-1)^{\epsilon(j+1,I)+\epsilon(j,J)} \Delta_{I\setminus\{j+1\}} \Delta_{J\cup\{j\}}=0,
   \end{align}
-  for each $I\subseteq\{1,3,\ldots,2k-1\}$ with cardinality $e_1+1$ and each $J\subseteq\{2,4,\ldots, 2k-2\}$ with cardinality $e_2-1$.
+  for each $I\subseteq\{2\ell-1\}$ with cardinality $e_1+1$ and each $J\subseteq\{2\ell\}$ with cardinality $e_2-1$.
   In the equations above, we take $\Delta_I=0$ if $|I|=e_1+1$, i.e. when $j-1\notin I$ in \eqref{eq:left Plucker} or when $j+1\notin I$ in \eqref{eq:right Plucker}.
   \begin{remark}
     \label{rm:linear terms}
-    Note that, upon restriction to an attractor cell $A_{S_1,S_2}$, each quiver Pl\"ucker relation has either zero, one, or two linear terms since the restriction imposes $\Delta_{S_1}=\Delta_{S_2}=1$.
-    Thus necessary conditions for there to exist two linear terms are the containments $S_1\subseteq I$ and $J\subseteq S_2$.
+    Note that, upon restriction to an attractor cell $\AA_{S_1}^{S_2}$, each quiver Pl\"ucker relation has either zero, one, or two linear terms since the restriction imposes $\Delta_{S_1}=\Delta_{S_2}=1$.
+    Thus necessary conditions for there to exist two linear terms in \eqref{eq:left Plucker} or \eqref{eq:right Plucker} are the containments $S_1\subseteq I$ and $J\subseteq S_2$.
     Moreover, this condition precludes the possibility that a constant appears in a restricted quiver Pl\"ucker relation since $I\setminus\{j\pm1\}=S_1$ and $J\cup\{j\}=S_2$ are incompatible with the successor-closed requirement for the subquiver $S_1\sqcup S_2$ to label a cell in $Gr_\bfe(P_k)$.
   \end{remark}
 
   \begin{lemma}
     Let $S_1\sqcup S_2$ be a successor-closed subset of the support quiver of $\tilde P_k$ with $|S_i|=e_i$.
-    Given $I \subseteq_{e_1} \{1,3,\ldots,2k-1\}$ (resp. $J \subseteq_{e_2} \{2,4,\ldots, 2k-2\}$), we have $\Delta_I\equiv 0$ (resp. $\Delta_J\equiv 0$) when restricted to the attractor cell $A_{S_1,S_2}$ if there exists $t\in I\setminus S_1$ such that $\#\{s\in S_1:s\notin I, s>t\} < \#\{s\in I:s\notin S_1, s \ge t\}$ (and similarly for $J$).
+    Given $I \subseteq_{e_1} \{2\ell-1\}$ (resp. $J \subseteq_{e_2} \{2\ell\}$), we have $\Delta_I\equiv 0$ (resp. $\Delta_J\equiv 0$) when restricted to the attractor cell $\AA_{S_1}^{S_2}$ if there exists $t\in I\setminus S_1$ such that $\#\{s\in S_1:s\notin I, s>t\} < \#\{s\in I:s\notin S_1, s \ge t\}$ (and similarly for $J$).
   \end{lemma}
   \begin{proof}
     This matches the same condition for vanishing of Pl\"ucker coordinates in ordinary Schubert cells.
   \end{proof}
-
-  \begin{lemma}
+  \begin{corollary}
     Let $S_1\sqcup S_2$ be a successor-closed subset of the support quiver of $\tilde P_k$ with $|S_i|=e_i$.
-    Given $I \subseteq_{e_1} \{1,3,\ldots,2k-1\}$ (resp. $J \subseteq_{e_2} \{2,4,\ldots, 2k-2\}$) with $|I\setminus S_1|\ge2$ and $\Delta_I\not\equiv 0$ on $A_{S_1,S_2}$ (resp. $|J\setminus S_2|\ge 2$ and $\Delta_J\not\equiv 0$ on $A_{S_1,S_2}$), there exists a standard Pl\"ucker relation in which $\Delta_I$ (resp. $\Delta_J$) is the sole linear term.
-    Moreover, in any such Pl\"ucker relation every other Pl\"ucker coordinate $\Delta_{I'}$ (resp. $\Delta_{J'}$) appearing in the relation satisfies $I<I'$ (resp. $J<J'$) in the reverse lexicographic ordering.
-  \end{lemma}
+    Given $I \subseteq_{e_1} \{2\ell-1\}$ with $S_1<I$ (resp. $J \subseteq_{e_2} \{2\ell\}$ with $S_2<J$), in reverse lexicographic ordering, we have $\Delta_I \equiv 0$ (resp. $\Delta_J\equiv 0$) when restricted to the attractor cell $\AA_{S_1}^{S_2}$.
+  \end{corollary}
 
-  The following describes those quiver Pl\"ucker relations with two linear terms over $A_{S_1,S_2}$.
+  The following describes those quiver Pl\"ucker relations with two linear terms over $\AA_{S_1}^{S_2}$.
   \begin{lemma}
     Let $S_1\sqcup S_2$ be a successor-closed subset of the support quiver of $\tilde P_k$ with associated fixed point $E$ and $\bar{S}_1\sqcup\bar{S}_2$ the predecessor-closed subset associated with $P_k/E$.
-    The subsets $I\subseteq\{1,3,\ldots,2k-1\}$ with cardinality $e_1+1$ and $J\subseteq\{2,4,\ldots, 2k-2\}$ with cardinality $e_2-1$ for which the quiver Pl\"ucker relation \eqref{eq:left Plucker} (resp. \eqref{eq:right Plucker}) has two linear terms are precisely those of the form
+    The subsets $I\subseteq\{2\ell-1\}$ with cardinality $e_1+1$ and $J\subseteq\{2\ell\}$ with cardinality $e_2-1$ for which the quiver Pl\"ucker relation \eqref{eq:left Plucker} (resp. \eqref{eq:right Plucker}) has two linear terms are precisely those of the form
     \[I=S_1\cup\{\sigma_\ell(s-1)\} \qquad \text{and} \qquad J=S_2\setminus\{s\}\]
     (resp. $I=S_1\cup\{\sigma_\ell(s+1)\}$ and $J=S_2\setminus\{s\}$), where $s\in S_2$ and $\sigma_\ell(t)=t-\ell$ for $\ell\ge1$ with $\sigma_\ell(s)\in\bar{S}_2$ and $\sigma_\ell(s-1)\in\bar{S}_1$ (resp. $\sigma_\ell(s+1)\in\bar{S}_1$).
     In this case, quiver Pl\"ucker relation \eqref{eq:left Plucker} (resp. \eqref{eq:right Plucker}) contains the two linear terms $\Delta_{I\setminus\{s-1\}\cup\{\sigma_\ell(s-1)\}}$ (resp. $\Delta_{I\setminus\{s+1\}\cup\{\sigma_\ell(s+1)\}}$) and $\Delta_{J\setminus\{s\}\cup\{\sigma_\ell(s)\}}$.
   \end{lemma}
   \begin{proof}
-    Observe first that indeed the quiver Pl\"ucker relations given above have two linear terms since $s\pm1\in S_1$ for $s\in S_2$ while the conditions on the shift $\ell$ imply $\sigma_\ell(s\pm1)\notin S_1$ and $\sigma_\ell(s)\notin S_2$ with $\Delta_{S_1\setminus\{s\pm1\}\cup\{\sigma_\ell(s\pm1)\}}$ and $\Delta_{S_2\setminus\{s\}\cup\{\sigma_\ell(s)\}}$ not identically zero on $A_{S_1,S_2}$.
+    Observe first that indeed the quiver Pl\"ucker relations given above have two linear terms since $s\pm1\in S_1$ for $s\in S_2$ while the conditions on the shift $\ell$ imply $\sigma_\ell(s\pm1)\notin S_1$ and $\sigma_\ell(s)\notin S_2$ with $\Delta_{S_1\setminus\{s\pm1\}\cup\{\sigma_\ell(s\pm1)\}}$ and $\Delta_{S_2\setminus\{s\}\cup\{\sigma_\ell(s)\}}$ not identically zero on $\AA_{S_1}^{S_2}$.
 
     Now consider subsets $I$ and $J$ with $S_1\subseteq I$ and $J\subseteq S_2$ for which a quiver Pl\"ucker relation \eqref{eq:left Plucker} or \eqref{eq:right Plucker} has two linear terms.
     Set $\varepsilon=-1$ if this relation comes from \eqref{eq:left Plucker} and set $\varepsilon=+1$ if this relation comes from \eqref{eq:right Plucker}.
     Let $t+\varepsilon$ denote the unique element in $I\setminus S_1$ and let $s$ denote the unique element in $S_2\setminus J$.
-    By assumption, the term $\Delta_{I\setminus\{t+\varepsilon\}} \Delta_{J\cup\{t\}}$ must be linear and so the minor $\Delta_{J\cup\{t\}}$ cannot be identically zero nor identically one on $A_{S_1,S_2}$ following Remark~\ref{rm:linear terms}.
+    By assumption, the term $\Delta_{I\setminus\{t+\varepsilon\}} \Delta_{J\cup\{t\}}$ must be linear and so the minor $\Delta_{J\cup\{t\}}$ cannot be identically zero nor identically one on $\AA_{S_1}^{S_2}$ following Remark~\ref{rm:linear terms}.
     This forces $t<s$ and $t\in\bar{S_2}$.
     Similar consideration with the term $\Delta_{I\setminus\{s+\varepsilon\}} \Delta_{J\cup\{s\}}$ show that $s+\varepsilon\in\bar{S}_1$.
     Thus we may set $\ell=s-t$ and construct the sets $I$ and $J$ as above.
   \end{proof}
 
-  The next two results describe those quiver Pl\"ucker relations with only one linear term over $A_{S_1,S_2}$.
+  The next two results describe those quiver Pl\"ucker relations with only one linear term over $\AA_{S_1}^{S_2}$.
   \begin{lemma}
-    Upon restriction to $A_{S_1,S_2}$, a minor $\Delta_I$ (resp. $\Delta_J$) is the sole linear term in a quiver Pl\"ucker relation if it is not identically zero on $A_{S_1,S_2}$ and differs from $S_1$ (resp. $S_2$) in at least two places.
+    Upon restriction to $\AA_{S_1}^{S_2}$, a minor $\Delta_I$ (resp. $\Delta_J$) is the sole linear term in a quiver Pl\"ucker relation if it is not identically zero on $\AA_{S_1}^{S_2}$ and differs from $S_1$ (resp. $S_2$) in at least two places.
+  \end{lemma}
+
+  \begin{lemma}
+    Let $S_1\sqcup S_2$ be a successor-closed subset of the support quiver of $\tilde P_k$ with $|S_i|=e_i$.
+    Given $I \subseteq_{e_1} \{2\ell-1\}$ (resp. $J \subseteq_{e_2} \{2\ell\}$) with $|I\setminus S_1|\ge2$ and $\Delta_I\not\equiv 0$ on $\AA_{S_1}^{S_2}$ (resp. $|J\setminus S_2|\ge 2$ and $\Delta_J\not\equiv 0$ on $\AA_{S_1}^{S_2}$), there exists a standard Pl\"ucker relation in which $\Delta_I$ (resp. $\Delta_J$) is the sole linear term.
+    Moreover, in any such Pl\"ucker relation every other Pl\"ucker coordinate $\Delta_{I'}$ (resp. $\Delta_{J'}$) appearing in the relation satisfies $I<I'$ (resp. $J<J'$) in the reverse lexicographic ordering.
   \end{lemma}
   \begin{lemma}
     \mbox{}
@@ -428,7 +457,7 @@
           \item $1=\gamma(s+1)$ for some $s+1\in S_1$;
           \item $\gamma$ is surjective;
           \item the minor $\Delta_{S_1\setminus\{s+1\}\cup\{1\}}$ appears as the sole linear term in a quiver Pl\"ucker relation, where $s+1$ is the vertex of $\Gamma_E$ identified with vertex $1$ of $\Gamma_{P_k/E}$ under the bijection of vertices coming from the expansion procedure;
-          \item none of the minors associated to $\gamma$ are necessary to parametrize the cell $A_{S_1,S_2}$.
+          \item none of the minors associated to $\gamma$ are necessary to parametrize the cell $\AA_{S_1}^{S_2}$.
         \end{enumerate}
     \end{enumerate}
   \end{lemma}
@@ -442,39 +471,175 @@
     \[\Gamma_E=\{v_{k,t},v_{k,t+1},\ldots,v_{k,t+\ell}\}\qquad\text{and}\qquad\Gamma_{P_k/E}=\{v_{k,t'},v_{k,t'+1},\ldots,v_{k,t'+\ell}\}\]
     such that $t'<t$ and $\ell>0$, the following hold:
     \begin{enumerate}
-      \item there exists a quiver Pl\"ucker relation which, upon restriction to $A_{S_1,S_2}$, takes the form
+      \item there exists a quiver Pl\"ucker relation which, upon restriction to $\AA_{S_1}^{S_2}$, takes the form
         \[\Delta_{S_1\setminus\{s-1\}\cup\{\gamma(s-1)\}}-\varepsilon_\gamma(s)\Delta_{S_2\setminus\{s\}\cup\{\gamma(s)\}}=homogeneous~quadratic\]
         whenever $s$ is even with $t<s\le t+\ell$;
-      \item there exists a quiver Pl\"ucker relation which, upon restriction to $A_{S_1,S_2}$, takes the form
+      \item there exists a quiver Pl\"ucker relation which, upon restriction to $\AA_{S_1}^{S_2}$, takes the form
         \[\Delta_{S_1\setminus\{s+1\}\cup\{\gamma(s+1)\}}-\varepsilon'_\gamma(s)\Delta_{S_2\setminus\{s\}\cup\{\gamma(s)\}}=homogeneous~quadratic\]
         whenever $s$ is even with $t\le s<t+\ell$.
     \end{enumerate}
   \end{lemma}
   \begin{proof}
-    Observe that $\Delta_{S_1}=\Delta_{S_2}=1$ on $A_{S_1,S_2}$.
+    Observe that $\Delta_{S_1}=\Delta_{S_2}=1$ on $\AA_{S_1}^{S_2}$.
     Take $I=S_1\cup\{\gamma(s-1)\}$ and $J=S_2\setminus\{s\}$ in equation \eqref{eq:left Plucker} for $s$ even with $t<s\le t+\ell$ to get part (1).
     Take $I=S_1\cup\{\gamma(s+1)\}$ and $J=S_2\setminus\{s\}$ in equation \eqref{eq:right Plucker} for $s$ even with $t\le s<t+\ell$ to get part (2).
   \end{proof}
 
   \begin{lemma}
     Let $S_1\sqcup S_2$ be a successor-closed subset of the support quiver of $\tilde P_k$ with associated fixed point $E$.
-    There exists $I\subseteq\{1,3,\ldots,2k-1\}$ with cardinality $e_1+1$ and each $J\subseteq\{2,4,\ldots, 2k-2\}$ with cardinality $e_2-1$ such that $S_1\subseteq I$ and $J\subseteq S_2$ if and only if 
+    There exists $I\subseteq\{2\ell-1\}$ with cardinality $e_1+1$ and each $J\subseteq\{2\ell\}$ with cardinality $e_2-1$ such that $S_1\subseteq I$ and $J\subseteq S_2$ if and only if 
   \end{lemma}
   
   \begin{theorem}
     Let $S_1\sqcup S_2$ be a successor-closed subset of the support quiver of $\tilde P_k$ with $|S_i|=e_i$.
-    Then the attractor cell $A_{S_1,S_2}$ is parametrized as an affine space by the Pl\"ucker coordinates 
+    Then the attractor cell $\AA_{S_1}^{S_2}$ is parametrized as an affine space by the Pl\"ucker coordinates 
     \begin{itemize}
       \item $\Delta_J$ for $J=S_2\setminus\{s\}\cup\{t\}$ with $s\in S_2$, $t\in\bar{S}_2$, and $t<s$;
       \item $\Delta_I$ for $I=???$
     \end{itemize}
   \end{theorem}
   \begin{proof}
-    By construction, upon restriction to $A_{S_1,S_2}$ we have $\Delta_{S_1}\equiv 1$, $\Delta_{S_2}\equiv 1$.
+    By construction, upon restriction to $\AA_{S_1}^{S_2}$ we have $\Delta_{S_1}\equiv 1$, $\Delta_{S_2}\equiv 1$.
     Also,
     \[\Delta_I\equiv 0 \qquad \Delta_J\equiv 0\]
     if there exists $i\in I\setminus S_1$ such that $\#\{j\in S_1:j\notin I, j>i\} < \#\{j\in I:j\notin S_1,j>i\}$ and similarly for $J$.
   \end{proof}
+
+\section{Cell Closure Properties}
+
+  Let $\bfe\in\ZZ^2$.
+  Write $\cC_\bfe$ for the set of all compatible pairs $(S_1,S_2)$ with $S_1 \subseteq_{e_1} \{2k\}$ and $S_2 \subseteq_{e_2} \{2k+1\}$.
+  We consider the lexicographic ordering $\prec$ on $\cC_\bfe$, i.e. $(S'_1,S'_2) \prec (S_1,S_2)$ if $S'_1 < S_1$ or $S'_1 = S_1$ and $S'_2 < S_2$, where $<$ denotes the standard lexicographic ordering on subsets.
+  \begin{theorem}
+    For any $(S_1,S_2)\in\cC_\bfe$, the set $\bigsqcup\limits_{(S'_1,S'_2)\preceq (S_1,S_2)} A_{S'_1}^{S'_2}$ is closed in $Gr_\bfe(P_n)$.
+  \end{theorem}
+  \begin{proof}
+    We show by induction along the ordering $\prec$ on $\cC_\bfe$ that
+    \[\overline{\AA}_{S_1}^{S_2}\subset\bigsqcup\limits_{(S'_1,S'_2)\preceq (S_1,S_2)} A_{S'_1}^{S'_2}.\]
+    Since $\AA_{1,\ldots,2e_1-1}^{2,\ldots,2e_2}$ is just a point and is initial in $\cC_\bfe$, there is nothing to show. 
+
+    For any other $(S_1,S_2) \in \cC_\bfe$, we clearly have $\AA_{S_1}^{S_2} \subset \overline{\AA}_{S_1}^{S_2}$, so we consider $(S'_1,S'_2)\prec (S_1,S_2)$.
+    If $S'_1=S_1$, then $\AA_{S'_1}^{S'_2} \subset \overline{\AA}_{S_1}^{S_2}$ along the same degeneration giving $\AA_{S'_2}$ on the boundary of $\AA_{S_2}$ inside $Gr_{e_2}(\CC^n)$.
+    Similarly, when $S'_2=S_2$, the intersection of $\overline{\AA}_{S_1}^{S_2}$ with $\AA_{S'_1}^{S'_2}$ occurs along the degeneration giving $\AA_{S'_1}$ on the boundary of $\AA_{S_1}$ inside $Gr_{e_1}(\CC^{n+1})$, but imposes relations on the image of its projection into $\AA_{S_2}$ inside $Gr_{e_2}(\CC^n)$.
+
+    Now suppose $(S'_1,S'_2) \prec (S_1,S_2)$ with $S'_1 < S_1$ and $S'_2 < S_2$.
+    \sayDR{Completing this proof requires some combinatorics that I haven't worked out yet.}
+  \end{proof}
+
+  \begin{example}
+    The quiver Grassmannian $Gr_{(4,2)}(P_5)$ is defined as a subscheme of $Gr_4(\CC^5)\times Gr_2(\CC^4)$ via the quiver Pl\"ucker relations in the standard Pl\"ucker coordinates:
+    \begin{align*}
+      0 &= \Delta_{3,5,7,9} \Delta_{2,8} - \Delta_{1,5,7,9}\Delta_{4,8} + \Delta_{1,3,7,9}\Delta_{6,8}\\
+      0 &= \Delta_{1,5,7,9}\Delta_{2,8} - \Delta_{1,3,7,9}\Delta_{4,8} + \Delta_{1,3,5,9}\Delta_{6,8}\\
+      0 &= \Delta_{3,5,7,9} \Delta_{2,6} - \Delta_{1,5,7,9}\Delta_{4,6} + \Delta_{1,3,5,9}\Delta_{6,8}\\
+      0 &= \Delta_{1,5,7,9}\Delta_{2,6} - \Delta_{1,3,7,9}\Delta_{4,6} + \Delta_{1,3,5,7}\Delta_{6,8}\\
+      0 &= \Delta_{3,5,7,9} \Delta_{2,4} - \Delta_{1,3,7,9}\Delta_{4,6} + \Delta_{1,3,5,9}\Delta_{4,8}\\
+      0 &= \Delta_{1,5,7,9}\Delta_{2,4} - \Delta_{1,3,5,9}\Delta_{4,6} + \Delta_{1,3,5,7}\Delta_{4,8}\\
+      0 &= \Delta_{1,5,7,9}\Delta_{2,4} - \Delta_{1,3,7,9}\Delta_{2,6} + \Delta_{1,3,5,9}\Delta_{2,8}\\
+      0 &= \Delta_{1,3,7,9}\Delta_{2,4} - \Delta_{1,3,5,9}\Delta_{2,6} + \Delta_{1,3,5,7}\Delta_{2,8}
+    \end{align*}
+    Observe that this collection of relations is invariant under the action of the longest element in the symmetric group $\Sigma_9$.
+    Together with the standard Pl\"ucker relation on $Gr_2(\CC^4)$:
+    \begin{equation*}
+      0 = \Delta_{4,6}\Delta_{2,8} - \Delta_{4,8}\Delta_{2,6} + \Delta_{6,8}\Delta_{2,4},
+    \end{equation*}
+    we obtain all of the relations for the quiver Grassmannian $Gr_{(4,2)}(P_5)$ in the Pl\"ucker embedding.
+
+    Using these, we compute the closures of the affine cells $\AA_{S_1}^{S_2}$ in order of increasing dimension.
+    \begin{itemize}
+      \item $S_1=\{1,3,5,7\}$, $S_2=\{2,4\}$: The cell $\AA_{1,3,5,7}^{2,4}$ is just a point where all relations vanish.
+
+      \item $S_1=\{1,3,5,7\}$, $S_2=\{2,6\}$: The cell $\AA_{1,3,5,7}^{2,6} \cong \AA^1$ has coordinate $\Delta_{2,4}$ and where all relations vanish.
+        The closure contains:
+        \begin{itemize}
+          \item the cell $\AA_{1,3,5,7}^{2,4}$ in the limit $|\Delta_{2,4}|\to\infty$;
+        \end{itemize}
+        and identifies with $\PP^1$ via the projection to $Gr_2(\CC^4)$.
+
+      \item $S_1=\{1,3,5,7\}$, $S_2=\{4,6\}$: The cell $\AA_{1,3,5,7}^{4,6} \cong \AA^2$ is an affine plane with Pl\"ucker coordinates $\Delta_{2,4},\Delta_{2,6}$ and where all relations vanish.
+        The closure contains:
+        \begin{itemize}
+          \item the cell $\AA_{1,3,5,7}^{2,6}$ in the limit $|\Delta_{2,6}|\to\infty$ with $\Delta_{2,4}/\Delta_{2,6}$ as coordinate;
+          \item the cell $\AA_{1,3,5,7}^{2,4}$ in the limit $|\Delta_{2,4}/\Delta_{2,6}|\to\infty$;
+        \end{itemize}
+        and identifies with $\PP^2$ via the projection to $Gr_2(\CC^4)$.
+
+      \item $S_1=\{1,3,5,9\}$, $S_2=\{2,4\}$: The cell $\AA_{1,3,5,9}^{2,4} \cong \AA^1$ is an affine line with Pl\"ucker coordinate $\Delta_{1,3,5,7}$ and where all relations vanish.
+        The closure contains:
+        \begin{itemize}
+          \item the cell $\AA_{1,3,5,7}^{2,4}$ in the limit $|\Delta_{1,3,5,7}|\to\infty$
+        \end{itemize}
+        and identifies with $\PP^1$ via the projection to $Gr_4(\CC^5)$.
+
+      \item $S_1=\{1,3,7,9\}$, $S_2=\{2,8\}$: The cell $\AA_{1,3,7,9}^{2,8} \cong \AA^2$ is an affine plane with Pl\"ucker coordinates $\Delta_{1,3,5,7}$, $\Delta_{1,3,5,9}$, $\Delta_{2,4}$, $\Delta_{2,6}$ satisfying the relations:
+        \begin{align*}
+           0 &=  - \Delta_{2,6} + \Delta_{1,3,5,9}\\
+           0 &= \Delta_{2,4} - \Delta_{1,3,5,9}\Delta_{2,6} + \Delta_{1,3,5,7}
+        \end{align*}
+        The closure contains:
+        \begin{itemize}
+          \item the cell $\AA_{1,3,5,7}^{2,6}$ in the limit $|\Delta_{2,6}|\to\infty$ with $\Delta_{2,4}/\Delta_{2,6}$ as coordinate (note that $|\Delta_{1,3,5,7}/\Delta_{1,3,5,9}|\to\infty$ in the limit);
+          \item the cell $\AA_{1,3,5,9}^{2,4}$
+          \item the cell $\AA_{1,3,5,7}^{2,4}$
+        \end{itemize}
+        the union of which identifies with the blow-up of $\overline{\AA}_{1,3,5,7}^{2,6}$ at the point $\AA_{1,3,5,7}^{2,4}$ with special fiber $\overline{\AA}_{1,3,5,9}^{2,4}$.
+        After projecting the closure to $Gr_4(\CC^5)$, we obtain the copy of $\PP^2$ given by $\overline{\AA}_{2,8}$.
+        However, the fiber over the point $\AA_{2,4}$ is given by $\overline{\AA}_{1,3,5,9}^{2,4}$.
+        In this way, $\overline{\AA}_{1,3,7,9}^{2,8}$ is obtained by gluing $\AA_{1,3,7,9}^{2,8}$ onto the blow-up of $\overline{\AA}_{1,3,5,7}^{2,6}$ at the point $\AA_{1,3,5,7}^{2,4}$.
+
+      \item $S_1=\{3,5,7,9\}$, $S_2=\{4,6\}$: The cell $\AA_{3,5,7,9}^{4,6} \cong \AA^2$ is two-dimensional with Pl\"ucker coordinates $\Delta_{1,3,5,7}$, $\Delta_{1,3,5,9}$, $\Delta_{1,3,7,9}$, $\Delta_{1,5,7,9}$, $\Delta_{2,4}$, $\Delta_{2,6}$ satisfying the relations:
+        \begin{align*}
+          0 &= \Delta_{2,6} - \Delta_{1,5,7,9}\\
+          0 &= \Delta_{1,5,7,9}\Delta_{2,6} - \Delta_{1,3,7,9}\\
+          0 &= \Delta_{2,4} - \Delta_{1,3,7,9}\\
+          0 &= \Delta_{1,5,7,9}\Delta_{2,4} - \Delta_{1,3,5,9}\\
+          0 &= \Delta_{1,5,7,9}\Delta_{2,4} - \Delta_{1,3,7,9}\Delta_{2,6}\\
+          0 &= \Delta_{1,3,7,9}\Delta_{2,4} - \Delta_{1,3,5,9}\Delta_{2,6}
+        \end{align*}
+        The closure contains:
+        \begin{itemize}
+          \item the curve $\langle \Delta_{2,4}=\Delta_{2,6}^2 \rangle \subset \AA_{1,3,5,7}^{2,6}$ in the limit $|\Delta_{1,3,5,7}|\to\infty$
+          \item the cell $\AA_{1,3,5,9}^{2,4}$ in the limit $|\Delta_{2,6}|\to\infty$ with $\frac{\Delta_{1,3,5,7}}{\Delta_{1,3,5,9}}$ as coordinate
+          \item the cell $\AA_{1,3,5,7}^{2,4}$ in the limit $|\frac{\Delta_{1,3,5,7}}{\Delta_{1,3,5,9}}|\to\infty$ since $|\Delta_{2,6}^3|\equiv|\Delta_{1,3,5,9}|\to\infty$ implies $|\Delta_{2,4}/\Delta_{2,6}|\to\infty$
+        \end{itemize}
+
+      \item $S_1=\{1,5,7,9\}$, $S_2=\{6,8\}$: The cell $\AA_{1,5,7,9}^{6,8} \cong \AA^3$ is three-dimensional with Pl\"ucker coordinates $\Delta_{1,3,5,7}$, $\Delta_{1,3,5,9}$, $\Delta_{1,3,7,9}$, $\Delta_{2,4}$, $\Delta_{2,6}$, $\Delta_{2,8}$, $\Delta_{4,6}$, $\Delta_{4,8}$ satisfying the relations:
+      \begin{align*}
+        0 &= -\Delta_{4,8} + \Delta_{1,3,7,9}\\
+        0 &= \Delta_{2,8} - \Delta_{1,3,7,9}\Delta_{4,8} + \Delta_{1,3,5,9}\\
+        0 &= -\Delta_{4,6} + \Delta_{1,3,5,9}\\
+        0 &= \Delta_{2,6} - \Delta_{1,3,7,9}\Delta_{4,6} + \Delta_{1,3,5,7}\\
+        0 &= - \Delta_{1,3,7,9}\Delta_{4,6} + \Delta_{1,3,5,9}\Delta_{4,8}\\
+        0 &= \Delta_{2,4} - \Delta_{1,3,5,9}\Delta_{4,6} + \Delta_{1,3,5,7}\Delta_{4,8}\\
+        0 &= \Delta_{2,4} - \Delta_{1,3,7,9}\Delta_{2,6} + \Delta_{1,3,5,9}\Delta_{2,8}\\
+        0 &= \Delta_{1,3,7,9}\Delta_{2,4} - \Delta_{1,3,5,9}\Delta_{2,6} + \Delta_{1,3,5,7}\Delta_{2,8}
+      \end{align*}
+
+      \item $S_1=\{3,5,7,9\}$, $S_2=\{4,8\}$: The cell $\AA_{3,5,7,9}^{4,8} \cong \AA^3$ is three-dimensional with Pl\"ucker coordinates $\Delta_{1,3,5,7}$, $\Delta_{1,3,5,9}$, $\Delta_{1,3,7,9}$, $\Delta_{1,5,7,9}$, $\Delta_{2,4}$, $\Delta_{2,6}$, $\Delta_{2,8}$, $\Delta_{4,6}$ satisfying the relations:
+      \begin{align*}
+        0 &= \Delta_{2,8} - \Delta_{1,5,7,9} + \Delta_{1,3,7,9}\Delta_{6,8}\\
+        0 &= \Delta_{1,5,7,9}\Delta_{2,8} - \Delta_{1,3,7,9} + \Delta_{1,3,5,9}\Delta_{6,8}\\
+        0 &= \Delta_{2,6} - \Delta_{1,5,7,9}\Delta_{4,6} + \Delta_{1,3,5,9}\Delta_{6,8}\\
+        0 &= \Delta_{1,5,7,9}\Delta_{2,6} - \Delta_{1,3,7,9}\Delta_{4,6} + \Delta_{1,3,5,7}\Delta_{6,8}\\
+        0 &= \Delta_{2,4} - \Delta_{1,3,7,9}\Delta_{4,6} + \Delta_{1,3,5,9}\\
+        0 &= \Delta_{1,5,7,9}\Delta_{2,4} - \Delta_{1,3,5,9}\Delta_{4,6} + \Delta_{1,3,5,7}\\
+        0 &= \Delta_{1,5,7,9}\Delta_{2,4} - \Delta_{1,3,7,9}\Delta_{2,6} + \Delta_{1,3,5,9}\Delta_{2,8}\\
+        0 &= \Delta_{1,3,7,9}\Delta_{2,4} - \Delta_{1,3,5,9}\Delta_{2,6} + \Delta_{1,3,5,7}\Delta_{2,8}
+      \end{align*}
+
+      \item $S_1=\{3,5,7,9\}$, $S_2=\{6,8\}$: The cell $\AA_{3,5,7,9}^{6,8} \cong \AA^4$ is four-dimensional with Pl\"ucker coordinates $\Delta_{1,3,5,7}$, $\Delta_{1,3,5,9}$, $\Delta_{1,3,7,9}$, $\Delta_{1,5,7,9}$, $\Delta_{2,4}$, $\Delta_{2,6}$, $\Delta_{2,8}$, $\Delta_{4,6}$, $\Delta_{4,8}$ satisfying the relations:
+      \begin{align*}
+        0 &= \Delta_{2,8} - \Delta_{1,5,7,9}\Delta_{4,8} + \Delta_{1,3,7,9}\\
+        0 &= \Delta_{1,5,7,9}\Delta_{2,8} - \Delta_{1,3,7,9}\Delta_{4,8} + \Delta_{1,3,5,9}\\
+        0 &= \Delta_{2,6} - \Delta_{1,5,7,9}\Delta_{4,6} + \Delta_{1,3,5,9}\\
+        0 &= \Delta_{1,5,7,9}\Delta_{2,6} - \Delta_{1,3,7,9}\Delta_{4,6} + \Delta_{1,3,5,7}\\
+        0 &= \Delta_{2,4} - \Delta_{1,3,7,9}\Delta_{4,6} + \Delta_{1,3,5,9}\Delta_{4,8}\\
+        0 &= \Delta_{1,5,7,9}\Delta_{2,4} - \Delta_{1,3,5,9}\Delta_{4,6} + \Delta_{1,3,5,7}\Delta_{4,8}\\
+        0 &= \Delta_{1,5,7,9}\Delta_{2,4} - \Delta_{1,3,7,9}\Delta_{2,6} + \Delta_{1,3,5,9}\Delta_{2,8}\\
+        0 &= \Delta_{1,3,7,9}\Delta_{2,4} - \Delta_{1,3,5,9}\Delta_{2,6} + \Delta_{1,3,5,7}\Delta_{2,8}
+      \end{align*}
+    \end{itemize}
+  \end{example}
 
 % \section{Approach 2: Caldero-Chapoton Fibrations}
 % Given a short exact sequence 
@@ -502,6 +667,12 @@
 %   For any proper subrepresentation $G\subsetneq D_\beta$ and any subrepresentation $F\subseteq P_k$, the fiber $\Psi^{-1}(F,G)$ is non-empty
 % \end{lemma}
 
+\section{Future Directions}
+  \begin{itemize}
+    \item Find the classes of cells in cohomology with basis given by opposite cells (from the inverted torus action).
+    \item Find the intersections of opposite cells.
+    \item Study the cohomology classes of their closures.
+  \end{itemize}
 
 \begin{thebibliography}{10}
 
