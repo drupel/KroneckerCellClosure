@@ -45,20 +45,22 @@
   \maketitle
 
   \sayDR{This is a nice utility for commenting.}
+  
+   \sayER{Testing testing.} 
 
 \section{Introduction}
   Quiver Grassmannians are projective varieties parametrizing subrepresentations of a given quiver representation.
   This provides a direct generalization of the standard Grassmannians of linear subspaces in a vector space in which the geometry behind linear transformations between such linear spaces is taken into consideration.
   Our goal in this project is to begin making explicit the geometry of these spaces.
   Unfortunately, in such an endeavor, it would be hopeless to expect a uniform description of this geometry since every projective variety can be realized as an appropriate quiver Grassmannian \cite{reineke}.
-  
+
   We therefore restrict in this note to the well-studied example of the \emph{Kronecker quiver} with two vertices and two parallel arrows as an initial proof of concept.
   In a subsequent work, we will utilize the results of \cite{rupel-weist} to extend our approach here to the Grassmannians of subrepresentations for the directly generalized $n$-Kronecker quivers (with an arbitrary number $n$ of parallel arrows between the pair of vertices); this simple case is already rich enough to encode the geometry of arbitrary projective varieties \sayDR{ToDo: Add a reference to Ringel} and so we restrict there and here to certain special representations with a more uniform geometric structure.
 
   In the 2-Kronecker case, we further restrict to the case of indecomposable representations, though with the help of Caldero-Chapoton fibrations (c.f. Section~\ref{???}) this restriction is easily removed.
   These quiver Grassmannians have been extensively studied, in the process of constructing our main results we reproduce the cell decompositions obtained by Cerulli Irelli and Esposito \cite{cerulli irelli-esposito}, albeit using very different methods which allow us to deduce an explicit description of the closures of these affine cells.
   Unfortunately, this also demonstrates that this cellular decomposition does not provide the quiver Grassmannians with the structure of a CW-complex.
-  However, this does become the case after a mild refinement of the cells according to isomorphism type of the subrepresentations within the cell.  
+  However, this does become the case after a mild refinement of the cells according to isomorphism type of the subrepresentations within the cell.
 
   Our approach builds from the explicit description of Pl\"ucker relations for quiver Grassmannians developed by Lorscheid and Weist \cite{lorscheid-weist} which we utilize to give an explicit parametrization of the affine cells in such cell decompositions.
   This provides the essential tool we will use for understanding cell closures.
@@ -79,7 +81,7 @@
     There is an induced closed embedding $Gr_e(W)\subset Gr_e(V)$.
     If, in a chosen basis, $W$ forms the initial coordinate subspace of $V$, then the image of $Gr_e(W)$ inside $Gr_e(V)$ is a union of Schubert cells.
   \end{lemma}
-  As a result, we will abuse notation slightly and remain ambiguous about the superset for a collection indices $S$ labeling a Schubert cell $\AA_S$. 
+  As a result, we will abuse notation slightly and remain ambiguous about the superset for a collection indices $S$ labeling a Schubert cell $\AA_S$.
 
 \section{Representations of the 2-Kronecker Quiver}
 
@@ -153,7 +155,7 @@
 
   \subsection{Description via Torus Actions}
     The results of this section can be found in \cite{cerulli irelli-esposito}, we give an independent presentation for convenience of the reader and to introduce useful notation.
- 
+
     Define a $\CC^*$-action on $P_k$ by $z.v_{k,t}=z^{-t}v_{k,t}$ for $t\in[1,2k-1]$.
     \begin{lemma}
       This induces a $\CC^*$-action on $Gr_\bfe(P_k)$.
@@ -163,53 +165,53 @@
     \begin{proof}
       The $\CC^*$-action on $P_k$ induces an action on $Gr_{e_1}(\CC^k)\times Gr_{e_2}(\CC^{k-1})$, we claim that $Gr_\bfe(P_k)\subseteq Gr_{e_1}(\CC^k)\times Gr_{e_2}(\CC^{k-1})$ is invariant under this action.
       Indeed, for $E\in Gr_\bfe(P_k)$ and $x_2\in E_2$, we may write $x_2=\sum\limits_{\text{$t$ even}} c_t v_{k,t}$.
-      Then for $z\in\CC^*$, we have 
+      Then for $z\in\CC^*$, we have
       \[\alpha(z.x_2)=\sum\limits_{\text{$t$ even}} c_t \alpha(z.v_{k,t})=\sum\limits_{\text{$t$ even}} c_t z^{-t}\alpha(v_{k,t})=z^{-1}\sum\limits_{\text{$t$ even}} c_t z.\alpha(v_{k,t})=z^{-1} \big(z.\alpha(x_2)\big)\in z.E_1\]
       with a similar calculation holding for $\beta$.
       This gives the first claim that $Gr_\bfe(P_k)$ is stable under the action.
- 
+
       A point of $Gr_{e_1}(\CC^k)\times Gr_{e_2}(\CC^{k-1})$ is fixed by the $\CC^*$-action precisely when it consists of a pair $(E_1,E_2)$ of coordinate subspaces (with respect to the basis $\{v_{k,t}\}$ of $P_k$), i.e.\ they are described combinatorially via a pair of subsets $S_1\subseteq\{1\le t\le 2k-1:\text{$t$ odd}\}$ and $S_2\subseteq\{1\le t\le 2k-1:\text{$t$ even}\}$.
       In particular, these pairs naturally give rise to representations of $\widetilde Q$.
       Such a pair gives a fixed point inside $Gr_\bfe(P_k)$ precisely when it defines a subrepresentation of $P_k$, namely when $\alpha(E_2),\beta(E_2)\subseteq E_1$, or combinatorially when $\{t-1,t+1:t\in S_2\}\subseteq S_1$, that is when this determines a subrepresentation of $\widetilde P_k$.
- 
+
       The combinatorial condition above is precisely the condition of being a successor-closed subset of the support quiver of $\widetilde P_k$.
     \end{proof}
-    
+
     Write $E_{S_1}^{S_2}\in Gr_\bfe(P_k)$ for the fixed point associated to the successor-closed subset $S_1\sqcup S_2$ of the support quiver of $\widetilde P_k$.
     The \emph{attractor cell} of this fixed point is the set $\AA_{S_1}^{S_2}:=\{ E\in Gr_\bfe(P_k) : \lim\limits_{z\to 0} z.E=E_{S_1}^{S_2} \}$.
     More precisely, we may parametrize $\AA_{S_1}^{S_2}$ as the set of subrepresentations $E\subseteq P_k$ having the following form:
     \[ E_2 = \Span\{x_{k,t}:t\in S_2, x_{k,t}\in v_{k,t}+\bigoplus\limits_{\substack{t'<t\\ \text{$t'$ even}\\ t'\notin S_2}} \CC v_{k,t'} \} \]
     and
     \[ E_1 = \big(\alpha(E_2)+\beta(E_2)\big)\oplus\Span\{x_{k,t}:t\in S_1\setminus(\alpha(S_2)\cup\beta(S_2)), x_{k,t}\in v_{k,t}+\bigoplus\limits_{\substack{t'<t\\ \text{$t'$ odd}\\ t'\notin S_1}} \CC v_{k,t'} \}. \]
-    Since the fixed points are isolated, we may apply the results of Bia\l{}ynicki-Birula to get a decomposition of $Gr_\bfe(P_k)$ into the affine spaces $\AA_{S_1}^{S_2}$, i.e.\ we have the decomposition 
+    Since the fixed points are isolated, we may apply the results of Bia\l{}ynicki-Birula to get a decomposition of $Gr_\bfe(P_k)$ into the affine spaces $\AA_{S_1}^{S_2}$, i.e.\ we have the decomposition
     \[Gr_\bfe(P_k)=\bigsqcup_{S_1\sqcup S_2} \AA_{S_1}^{S_2}.\]
     Our goal is to compute the closures of the cells $\AA_{S_1}^{S_2}$ inside $Gr_\bfe(P_k)$.
- 
+
     \begin{remark}
       Observe that this construction of the cell decomposition of $Gr_\bfe(P_k)$ naturally identifies each attractor cell $\AA_{S_1}^{S_2}$ as a subset of the product $\AA_{S_1}\times \AA_{S_2}$ of standard Schubert cells in $Gr_{e_1}(\CC^k)\times Gr_{e_2}(\CC^{k-1})$.
       The parametrization giving the subspaces $E_2$ inside $\AA_{S_1}^{S_2}$ is precisely the standard parametrization of the Schubert cell inside $Gr_{e_2}(\CC^{k-1})$ corresponding to the subset $S_2$.
     \end{remark}
- 
+
   \subsection{Description of Cells via Tangent Spaces}
     \label{sec:tangent parametrization}
     The tangent space to $Gr_\bfe(P_k)$ at a point $E$ is naturally identified with the space $\Hom(E,P_k/E)$.
     If $E$ is a $\CC^*$-fixed point, there is an induced $\CC^*$-action on $\Hom(E,P_k/E)$.
     In this case, we may endow $\Hom(E,P_k/E)$ with a basis of eigenvectors for this action as follows.
- 
+
     Let $S_1\sqcup S_2$ be a successor-closed subquiver of the support quiver of $\tilde P_k$ and $E=E_{S_1}^{S_2}\in Gr_\bfe(P_k)$ the corresponding $\CC^*$-fixed point.
     Since $S_1\sqcup S_2$ is successor-closed, it is not hard to see that the corresponding subquiver $\bar{S}_1\sqcup\bar{S}_2)$ is predecessor-closed for $\bar{S}_1:=\{1\le t\le 2k-1:\text{$t$ odd},t\notin S_1\}$ and $\bar{S}_2:=\{1\le t\le 2k-1:\text{$t$ even},t\notin S_2\}$.
     As can be seen in \cite[Prop. 2.0.2]{cerulli irelli-esposito}, the vector space $\Hom(E,P_k/E)$ admits a basis $\{f_\gamma\}$ labeled by isomorphisms $\gamma:\Gamma_E\to\Gamma_{P_k/E}$ from a connected predecessor-closed subquiver of $S_1\sqcup S_2$ to a connected successor-closed subquiver of $\bar{S}_1\sqcup\bar{S}_2$.
- 
+
     Observe that the vertices of $\Gamma_E$ are of the form $v_{k,t},v_{k,t+1},\ldots$ for some $t\in[1,2k-1]$ and the vertices of $\Gamma_{P_k/E}$ are of the form $v_{k,t'},v_{k,t'+1},\ldots$ for some $t'\in[1,2k-1]$.
     The action of $\CC^*$ on the corresponding basis vector $f_\gamma$ of $\Hom(E,P_k/E)$ is given by
     \[z.f_\gamma=z^{t-t'}f_\gamma.\]
- 
+
     \begin{lemma}
       Each attractor cell is isomorphic to the positive weight component of the tangent space of its fixed point.
     \end{lemma}
- 
+
     Therefore, we may parametrize the attractor cell of a $\CC^*$-fixed point $E$ via the standard basis vectors $f_\gamma$ of $\Hom(E,P_k/E)$ for which $t>t'$, i.e. $\gamma$ represents a ``shift to the left'' in the support quiver of $\tilde P_k$.
- 
+
     \begin{example}
       Let $k=9$ and consider the successor-closed subset $(S_1,S_2)$ of the support quiver of $\tilde P_k$ given by
       \[S_1=\{3,5,11,13,15,17\}\qquad\text{and}\qquad S_2=\{4,12,14\}\]
@@ -217,18 +219,18 @@
         \begin{tikzpicture}
           \foreach \i in {3,5,11,13,15,17}{
             \draw[fill=black] (0.5*\i,1) circle (2pt);
-            \node[above] at (0.5*\i,1) {\i};} 
+            \node[above] at (0.5*\i,1) {\i};}
           \foreach \i in {1,7,9}{
             \draw[fill=white] (0.5*\i,1) circle (2pt);
-            \node[above] at (0.5*\i,1) {\i};} 
+            \node[above] at (0.5*\i,1) {\i};}
           \foreach \i in {4,12,14}{
             \draw[fill=black] (0.5*\i,0) circle (2pt);
             \draw (0.5*\i,0) -- (0.5*\i-0.5,1);
             \draw (0.5*\i,0) -- (0.5*\i+0.5,1);
-            \node[below] at (0.5*\i,0) {\i};} 
+            \node[below] at (0.5*\i,0) {\i};}
           \foreach \i in {2,6,8,10,16}{
             \draw[fill=white] (0.5*\i,0) circle (2pt);
-            \node[below] at (0.5*\i,0) {\i};} 
+            \node[below] at (0.5*\i,0) {\i};}
         \end{tikzpicture}
       \]
       The possible isomorphisms $\gamma$ with positive weight are given by
@@ -239,18 +241,18 @@
           \draw[dotted,-stealth] (8.5,1.5) to[out=150,in=30] (4.5,1.5);
           \foreach \i in {3,5,11,13,15,17}{
             \draw[fill=black] (0.5*\i,1) circle (2pt);
-            \node[above] at (0.5*\i,1) {\i};} 
+            \node[above] at (0.5*\i,1) {\i};}
           \foreach \i in {1,7,9}{
             \draw[fill=white] (0.5*\i,1) circle (2pt);
-            \node[above] at (0.5*\i,1) {\i};} 
+            \node[above] at (0.5*\i,1) {\i};}
           \foreach \i in {4,12,14}{
             \draw[fill=black] (0.5*\i,0) circle (2pt);
             \draw (0.5*\i,0) -- (0.5*\i-0.5,1);
             \draw (0.5*\i,0) -- (0.5*\i+0.5,1);
-            \node[below] at (0.5*\i,0) {\i};} 
+            \node[below] at (0.5*\i,0) {\i};}
           \foreach \i in {2,6,8,10,16}{
             \draw[fill=white] (0.5*\i,0) circle (2pt);
-            \node[below] at (0.5*\i,0) {\i};} 
+            \node[below] at (0.5*\i,0) {\i};}
         \end{tikzpicture}
       \]
       \[
@@ -261,18 +263,18 @@
           \draw[dotted,-stealth] (7,-0.5) to[out=210,in=-30] (4,-0.5);
           \foreach \i in {3,5,11,13,15,17}{
             \draw[fill=black] (0.5*\i,1) circle (2pt);
-            \node[above] at (0.5*\i,1) {\i};} 
+            \node[above] at (0.5*\i,1) {\i};}
           \foreach \i in {1,7,9}{
             \draw[fill=white] (0.5*\i,1) circle (2pt);
-            \node[above] at (0.5*\i,1) {\i};} 
+            \node[above] at (0.5*\i,1) {\i};}
           \foreach \i in {4,12,14}{
             \draw[fill=black] (0.5*\i,0) circle (2pt);
             \draw (0.5*\i,0) -- (0.5*\i-0.5,1);
             \draw (0.5*\i,0) -- (0.5*\i+0.5,1);
-            \node[below] at (0.5*\i,0) {\i};} 
+            \node[below] at (0.5*\i,0) {\i};}
           \foreach \i in {2,6,8,10,16}{
             \draw[fill=white] (0.5*\i,0) circle (2pt);
-            \node[below] at (0.5*\i,0) {\i};} 
+            \node[below] at (0.5*\i,0) {\i};}
         \end{tikzpicture}
       \]
       \[
@@ -281,18 +283,18 @@
           \draw[dotted,-stealth] (7,-0.5) to[out=210,in=-30] (3,-0.5);
           \foreach \i in {3,5,11,13,15,17}{
             \draw[fill=black] (0.5*\i,1) circle (2pt);
-            \node[above] at (0.5*\i,1) {\i};} 
+            \node[above] at (0.5*\i,1) {\i};}
           \foreach \i in {1,7,9}{
             \draw[fill=white] (0.5*\i,1) circle (2pt);
-            \node[above] at (0.5*\i,1) {\i};} 
+            \node[above] at (0.5*\i,1) {\i};}
           \foreach \i in {4,12,14}{
             \draw[fill=black] (0.5*\i,0) circle (2pt);
             \draw (0.5*\i,0) -- (0.5*\i-0.5,1);
             \draw (0.5*\i,0) -- (0.5*\i+0.5,1);
-            \node[below] at (0.5*\i,0) {\i};} 
+            \node[below] at (0.5*\i,0) {\i};}
           \foreach \i in {2,6,8,10,16}{
             \draw[fill=white] (0.5*\i,0) circle (2pt);
-            \node[below] at (0.5*\i,0) {\i};} 
+            \node[below] at (0.5*\i,0) {\i};}
         \end{tikzpicture}
       \]
       \[
@@ -303,18 +305,18 @@
           \draw[dotted,-stealth] (7,-0.5) to[out=210,in=-30] (5,-0.5);
           \foreach \i in {3,5,11,13,15,17}{
             \draw[fill=black] (0.5*\i,1) circle (2pt);
-            \node[above] at (0.5*\i,1) {\i};} 
+            \node[above] at (0.5*\i,1) {\i};}
           \foreach \i in {1,7,9}{
             \draw[fill=white] (0.5*\i,1) circle (2pt);
-            \node[above] at (0.5*\i,1) {\i};} 
+            \node[above] at (0.5*\i,1) {\i};}
           \foreach \i in {4,12,14}{
             \draw[fill=black] (0.5*\i,0) circle (2pt);
             \draw (0.5*\i,0) -- (0.5*\i-0.5,1);
             \draw (0.5*\i,0) -- (0.5*\i+0.5,1);
-            \node[below] at (0.5*\i,0) {\i};} 
+            \node[below] at (0.5*\i,0) {\i};}
           \foreach \i in {2,6,8,10,16}{
             \draw[fill=white] (0.5*\i,0) circle (2pt);
-            \node[below] at (0.5*\i,0) {\i};} 
+            \node[below] at (0.5*\i,0) {\i};}
         \end{tikzpicture}
       \]
       \[
@@ -323,18 +325,18 @@
           \draw[dotted,-stealth] (6,-0.5) to[out=210,in=-30] (5,-0.5);
           \foreach \i in {3,5,11,13,15,17}{
             \draw[fill=black] (0.5*\i,1) circle (2pt);
-            \node[above] at (0.5*\i,1) {\i};} 
+            \node[above] at (0.5*\i,1) {\i};}
           \foreach \i in {1,7,9}{
             \draw[fill=white] (0.5*\i,1) circle (2pt);
-            \node[above] at (0.5*\i,1) {\i};} 
+            \node[above] at (0.5*\i,1) {\i};}
           \foreach \i in {4,12,14}{
             \draw[fill=black] (0.5*\i,0) circle (2pt);
             \draw (0.5*\i,0) -- (0.5*\i-0.5,1);
             \draw (0.5*\i,0) -- (0.5*\i+0.5,1);
-            \node[below] at (0.5*\i,0) {\i};} 
+            \node[below] at (0.5*\i,0) {\i};}
           \foreach \i in {2,6,8,10,16}{
             \draw[fill=white] (0.5*\i,0) circle (2pt);
-            \node[below] at (0.5*\i,0) {\i};} 
+            \node[below] at (0.5*\i,0) {\i};}
         \end{tikzpicture}
       \]
       \[
@@ -343,18 +345,18 @@
           \draw[dotted,-stealth] (6,-0.5) to[out=210,in=-30] (1,-0.5);
           \foreach \i in {3,5,11,13,15,17}{
             \draw[fill=black] (0.5*\i,1) circle (2pt);
-            \node[above] at (0.5*\i,1) {\i};} 
+            \node[above] at (0.5*\i,1) {\i};}
           \foreach \i in {1,7,9}{
             \draw[fill=white] (0.5*\i,1) circle (2pt);
-            \node[above] at (0.5*\i,1) {\i};} 
+            \node[above] at (0.5*\i,1) {\i};}
           \foreach \i in {4,12,14}{
             \draw[fill=black] (0.5*\i,0) circle (2pt);
             \draw (0.5*\i,0) -- (0.5*\i-0.5,1);
             \draw (0.5*\i,0) -- (0.5*\i+0.5,1);
-            \node[below] at (0.5*\i,0) {\i};} 
+            \node[below] at (0.5*\i,0) {\i};}
           \foreach \i in {2,6,8,10,16}{
             \draw[fill=white] (0.5*\i,0) circle (2pt);
-            \node[below] at (0.5*\i,0) {\i};} 
+            \node[below] at (0.5*\i,0) {\i};}
         \end{tikzpicture}
       \]
       \[
@@ -363,30 +365,30 @@
           \draw[dotted,-stealth] (2,-0.5) to[out=210,in=-30] (1,-0.5);
           \foreach \i in {3,5,11,13,15,17}{
             \draw[fill=black] (0.5*\i,1) circle (2pt);
-            \node[above] at (0.5*\i,1) {\i};} 
+            \node[above] at (0.5*\i,1) {\i};}
           \foreach \i in {1,7,9}{
             \draw[fill=white] (0.5*\i,1) circle (2pt);
-            \node[above] at (0.5*\i,1) {\i};} 
+            \node[above] at (0.5*\i,1) {\i};}
           \foreach \i in {4,12,14}{
             \draw[fill=black] (0.5*\i,0) circle (2pt);
             \draw (0.5*\i,0) -- (0.5*\i-0.5,1);
             \draw (0.5*\i,0) -- (0.5*\i+0.5,1);
-            \node[below] at (0.5*\i,0) {\i};} 
+            \node[below] at (0.5*\i,0) {\i};}
           \foreach \i in {2,6,8,10,16}{
             \draw[fill=white] (0.5*\i,0) circle (2pt);
-            \node[below] at (0.5*\i,0) {\i};} 
+            \node[below] at (0.5*\i,0) {\i};}
         \end{tikzpicture}
       \]
- 
+
     \end{example}
 
 \section{Quiver Pl\"ucker Relations}
   Given a totally ordered set $K$, write $\epsilon(k,K)=\#\{k'\in K: k'\le k\}$.
 
   Consider the embedding $Gr_\bfe(P_k)\into Gr_{e_1}(\CC^k)\times Gr_{e_2}(\CC^{k-1})\into \PP^{{k \choose e_1} - 1}\times \PP^{{k-1 \choose e_2} - 1}$ which is the composition of the natural inclusion $Gr_\bfe(P_k)\into Gr_{e_1}(\CC^k)\times Gr_{e_2}(\CC^{k-1})$ with the Pl\"ucker embeddings of the ordinary Grassmannians according to the basis $\{v_{k,1},\cdots,v_{k,2k-1}\}$ of $P_k$.
-  Then $Gr_\bfe(P_k)$ may be described explicitly in terms of the Pl\"ucker coordinates 
+  Then $Gr_\bfe(P_k)$ may be described explicitly in terms of the Pl\"ucker coordinates
   \[[\Delta_I:\Delta_J]_{I\subseteq_{e_1} \{2\ell-1\}, J\subseteq_{e_2} \{2\ell\}}.\]
-  
+
   Indeed, since $Gr_\bfe(P_k)$ lies inside $Gr_{e_1}(\CC^k)\times Gr_{e_2}(\CC^{k-1})$, the ordinary Pl\"ucker relations must be satisfied:
   \[\sum_{i\in I'\setminus I} (-1)^{\epsilon(i,I)} \Delta_{I\cup\{i\}} \Delta_{I'\setminus\{i\}}=0
     \qquad
@@ -487,12 +489,12 @@
 
   \begin{lemma}
     Let $S_1\sqcup S_2$ be a successor-closed subset of the support quiver of $\tilde P_k$ with associated fixed point $E$.
-    There exists $I\subseteq\{2\ell-1\}$ with cardinality $e_1+1$ and each $J\subseteq\{2\ell\}$ with cardinality $e_2-1$ such that $S_1\subseteq I$ and $J\subseteq S_2$ if and only if 
+    There exists $I\subseteq\{2\ell-1\}$ with cardinality $e_1+1$ and each $J\subseteq\{2\ell\}$ with cardinality $e_2-1$ such that $S_1\subseteq I$ and $J\subseteq S_2$ if and only if
   \end{lemma}
-  
+
   \begin{theorem}
     Let $S_1\sqcup S_2$ be a successor-closed subset of the support quiver of $\tilde P_k$ with $|S_i|=e_i$.
-    Then the attractor cell $\AA_{S_1}^{S_2}$ is parametrized as an affine space by the Pl\"ucker coordinates 
+    Then the attractor cell $\AA_{S_1}^{S_2}$ is parametrized as an affine space by the Pl\"ucker coordinates
     \begin{itemize}
       \item $\Delta_J$ for $J=S_2\setminus\{s\}\cup\{t\}$ with $s\in S_2$, $t\in\bar{S}_2$, and $t<s$;
       \item $\Delta_I$ for $I=???$
@@ -516,7 +518,7 @@
   \begin{proof}
     We show by induction along the ordering $\prec$ on $\cC_\bfe$ that
     \[\overline{\AA}_{S_1}^{S_2}\subset\bigsqcup\limits_{(S'_1,S'_2)\preceq (S_1,S_2)} A_{S'_1}^{S'_2}.\]
-    Since $\AA_{1,\ldots,2e_1-1}^{2,\ldots,2e_2}$ is just a point and is initial in $\cC_\bfe$, there is nothing to show. 
+    Since $\AA_{1,\ldots,2e_1-1}^{2,\ldots,2e_2}$ is just a point and is initial in $\cC_\bfe$, there is nothing to show.
 
     For any other $(S_1,S_2) \in \cC_\bfe$, we clearly have $\AA_{S_1}^{S_2} \subset \overline{\AA}_{S_1}^{S_2}$, so we consider $(S'_1,S'_2)\prec (S_1,S_2)$.
     If $S'_1=S_1$, then $\AA_{S'_1}^{S'_2} \subset \overline{\AA}_{S_1}^{S_2}$ along the same degeneration giving $\AA_{S'_2}$ on the boundary of $\AA_{S_2}$ inside $Gr_{e_2}(\CC^n)$.
@@ -642,7 +644,7 @@
   \end{example}
 
 % \section{Approach 2: Caldero-Chapoton Fibrations}
-% Given a short exact sequence 
+% Given a short exact sequence
 % \[\begin{tikzcd}
 %   0 \arrow{r} & M \arrow["\iota"]{r} & B \arrow["\pi"]{r} & N \arrow{r} & 0
 % \end{tikzcd}\]
@@ -676,68 +678,68 @@
 
 \begin{thebibliography}{10}
 
-\bibitem{ass} 
+\bibitem{ass}
   I.~Assem, D.~Simson, A.~Skowronski: Elements of the Representation Theory of Associative Algebras. Cambridge University Press, Cambridge 2007.
 
-\bibitem{ars} 
+\bibitem{ars}
   M.~Auslander, I.~Reiten, S.~O.~Smalo: Representation theory of Artin algebras {\bf 36}. Cambridge University Press, Cambridge 1997.
 
-\bibitem{bb} 
+\bibitem{bb}
   A.~Bia\l{}ynicki-Birula: Some theorems on actions of algebraic groups. Annals of Mathematics \textbf{98}, 480-497 (1973).
 
-\bibitem{bgp} 
+\bibitem{bgp}
   I.~N.~Bernstein, I.~M.~Gelfand, V.~A.~Ponomarev: Coxeter functors, and Gabriel's theorem. Russian Mathematical Surveys \textbf{28}(2), 17-32 (1973).
 
-\bibitem{brenner-butler} 
+\bibitem{brenner-butler}
   S.~Brenner, M.~C.~R.~Butler: The equivalence of certain functors occurring in the representation theory of artin algebras and species. Journal of the London Mathematical Society \textbf{2}(1), 183-187 (1976).
 
-\bibitem{cc} 
+\bibitem{cc}
   P.~Caldero, F.~Chapoton: Cluster algebras as {H}all algebras of quiver representations. Commentarii Mathematici Helvetici \textbf{81}(3), 595-616 (2006).
 
-\bibitem{ck} 
+\bibitem{ck}
   P.~Caldero, B.~Keller: From triangulated categories to cluster algebras II.  Annales Scientifique de l'Ecole Normale Superi\'{e}ure (4) \textbf{39} (6), 983-1009 (2006).
 
-\bibitem{cr} 
+\bibitem{cr}
   P.~Caldero, M.~Reineke: On the quiver Grassmannian in the acyclic case. Journal of Pure and Applied Algebra \textbf{212}(11), 2369-2380 (2008).
 
 \bibitem{ca}	J.B.~Carrell: Torus actions and cohomology. Algebraic quotients. Torus actions and cohomology. The adjoint representation and the adjoint action, 83-158. Encyclopaedia Mathematical Science \textbf{131}, Invariant Theory and Algebraic Transformation Groups, Springer, Berlin, 2002.
 
-\bibitem{cerulli irelli-esposito} 
+\bibitem{cerulli irelli-esposito}
   G.~Cerulli Irelli, F.~Esposito: Geometry of quiver Grassmannians of Kronecker type and applications to cluster algebras. Algebra \&  Number Theory \textbf{5}(6), 777-801 (2011).
 
-\bibitem{cefr} 
+\bibitem{cefr}
   G.~Cerulli Irelli, F.~Esposito, H.~Franzen, M.~Reineke: Topology of Quiver Grassmannians. Preprint 2018.
 
-\bibitem{gab} 
+\bibitem{gab}
   P.~Gabriel: The universal cover of a finite-dimensional algebra. Representations of algebras. Lecture Notes in Mathematics {\bf 903}, 68-105 (1981).
 
-\bibitem{llz} 
+\bibitem{llz}
   K.~Lee, L.~Li, A.~Zelevinsky: Greedy elements in rank 2 cluster algebras. Selecta Mathematica \textbf{20}(1), 57-82 (2014).
 
 \bibitem{lorscheid-weist}
   O.~Lorscheid and T.~Weist: Plücker Relations for Quiver Grassmannians. Algebr Represent Theor 22, 211–218 (2019). https://doi.org/10.1007/s10468-017-9762-4
 
-\bibitem{lw} 
+\bibitem{lw}
   O.~Lorscheid, T.~Weist: Representation type via Euler characteristics and singularities of quiver Grassmannians. Preprint 2017, arXiv:1706.00860.
 
 \bibitem{reineke}
   M.~Reineke: Every projective variety is a quiver Grassmannian. Algebr Represent Theor 16, 1313–1314 (2013). https://doi.org/10.1007/s10468-012-9357-z
 
-\bibitem{rin1} 
+\bibitem{rin1}
   C.~M.~Ringel. Exceptional modules are tree modules. Linear algebra and its Applications \textbf{275/276}, 471-493 (1998).
 
-\bibitem{rupel} 
+\bibitem{rupel}
   D.~Rupel: Rank Two Non-Commutative Laurent Phenomenon and Pseudo-Positivity. Preprint 2017, arXiv:1707.02696.
 
 \bibitem{rupel-weist}
   D.~Rupel and T.~Weist: Cell decompositions for rank two quiver Grassmannians.  Math. Z. \textbf{295}, 993–1038 (2020). https://doi.org/10.1007/s00209-019-02379-6.
 
-\bibitem{sch} 
+\bibitem{sch}
   A.~Schofield: General representations of quivers. Proceedings of the London Mathematical Society (3) \textbf{65}(1), 46-64 (1992).
 
-\bibitem{wei} 
+\bibitem{wei}
   T.~Weist: Localization of quiver moduli spaces. Representation Theory \textbf{17}(13), 382-425 (2013).
 
 \end{thebibliography}
-  
+
 \end{document}
