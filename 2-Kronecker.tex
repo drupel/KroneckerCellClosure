@@ -29,6 +29,7 @@
 \newcommand{\bfe}{\mathbf{e}}
 \newcommand{\bff}{\mathbf{f}}
 \newcommand{\bfg}{\mathbf{g}}
+\newcommand{\bfu}{\mathbf{u}}
 
 \newcommand{\cC}{\mathcal{C}}
 
@@ -78,7 +79,7 @@
   For $I \subset_e [n]$, we then get the value of the \emph{Pl\"ucker coordinate} $\Delta_I$ at the point $E$ as the $e\times e$ minor of $M(E)$ with columns labeled by $I$.
   As the Pl\"ucker coordinates depends on the choice of basis for $E$, they are only defined up to rescaling, i.e. the map
   \[E \mapsto [:\Delta_I:]_{I\subset_e[n]}\]
-  defines an embedding $Gr_e(\CC^n)\into \PP^{{n-1 \choose r} - 1}$.
+  defines an embedding $Gr_e(\CC^n)\into \PP^{{n \choose e} - 1}$.
   The image of this embedding is the closed subvariety defined by the \emph{Pl\"ucker relations}:
   \begin{equation}
     \label{eq:plucker}
@@ -87,12 +88,23 @@
   for subsets $I \subset_{e-1} [n]$ and $I' \subset_{e+1} [n]$, where $\epsilon(i,I)=\#\{i'\in I:i'\le i\}$.
 
   \subsection{Pl\"ucker Coordinate Parametrization of Standard Schubert Cells}
+  Consider a weight function $d:[n] \to \ZZ$ with $d(i)>d(j)$ for $i<j$.
+  This gives rise to a $\CC^*$-action on $\CC^n$ given by $z.\bfu_i=z^{d(i)} \bfu_i$ for each standard basis vector $\bfu_i$. 
+  In turn, we have an induced $\CC^*$-action on $Gr_e(\CC^n)$.
+  The standard Schubert cells of $Gr_e(\CC^n)$ can be seen as the Bia\l{}ynicki-Birula attractor cells \cite{bb} for this action.
+
+  More precisely, for $I \subset_e [n]$, write $E_I$ for the coordinate subspace $\langle \bfu_i \rangle_{i \in I}$.
+  Then the \emph{Schubert cell} $\AA_I$ is given by
+  \[\AA_I:=\{E\in Gr_e(\CC^n):\lim_{z\to0} z.E=E_I\}.\]
+  \begin{lemma}
+    The Schubert cell $\AA_I$ can be parametrized as an affine space by the normalized Pl\"ucker coordinates $\Delta_{I'}/\Delta_I$ for $I' \subset_e [n]$ with $|I\cap I'|=n-1$ and, writing $I\setminus I'=\{i\}$ and $I'\setminus I=\{j\}$, with $j<i$.
+  \end{lemma}
   
   \begin{lemma}
     Let $V$ be a vector space and $W\subset V$ a subspace.
     There is a choice of basis of $V$ for which the closed embedding $Gr_e(W)\subset Gr_e(V)$ identifies $Gr_e(W)$ with a union of Schubert cells inside $Gr_e(V)$.
   \end{lemma}
-  As a result, we will abuse notation slightly and remain ambiguous about the superset for a collection of indices $S$ labeling a Schubert cell $\AA_S$.
+  As a result, we will abuse notation slightly and remain ambiguous about the superset for a collection of indices $I$ labeling a Schubert cell $\AA_I$.
 
 \section{Representations of the 2-Kronecker Quiver}
 
