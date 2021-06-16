@@ -90,14 +90,17 @@
   \subsection{Pl\"ucker Coordinate Parametrization of Standard Schubert Cells}
   Consider a weight function $d:[n] \to \ZZ$ with $d(i)>d(j)$ for $i<j$.
   This gives rise to a $\CC^*$-action on $\CC^n$ given by $z.\bfu_i=z^{d(i)} \bfu_i$ for each standard basis vector $\bfu_i$. 
-  In turn, we have an induced $\CC^*$-action on $Gr_e(\CC^n)$.
+  In turn, we have an induced $\CC^*$-action on $Gr_e(\CC^n)$ given in the Pl\"ucker embedding by 
+  \[z.\Delta_I:=z^{\sum_{i\in I} d(i)}\Delta_I.\]
   The standard Schubert cells of $Gr_e(\CC^n)$ can be seen as the Bia\l{}ynicki-Birula attractor cells \cite{bb} for this action.
 
   More precisely, for $I \subset_e [n]$, write $E_I$ for the coordinate subspace $\langle \bfu_i \rangle_{i \in I}$.
   Then the \emph{Schubert cell} $\AA_I$ is given by
   \[\AA_I:=\{E\in Gr_e(\CC^n):\lim_{z\to0} z.E=E_I\}.\]
   \begin{lemma}
-    The Schubert cell $\AA_I$ can be parametrized as an affine space by the normalized Pl\"ucker coordinates $\Delta_{I'}/\Delta_I$ for $I' \subset_e [n]$ with $|I\cap I'|=n-1$ and, writing $I\setminus I'=\{i\}$ and $I'\setminus I=\{j\}$, with $j<i$.
+    The Schubert cell $\AA_I$ can be parametrized as an affine space by the normalized Pl\"ucker coordinates $\Delta_{I'}|_I:=\Delta_{I'}/\Delta_I$ for $I' \subset_e [n]$ with $|I\cap I'|=n-1$ and, writing $I\setminus I'=\{i\}$ and $I'\setminus I=\{j\}$, with $j<i$.
+    The $\CC^*$-action above restricts to the action 
+    \[z.\Delta_{I'}|_I:=z^{d(j)-d(i)} \Delta_{I'}|_I.\]
   \end{lemma}
   
   \begin{lemma}
