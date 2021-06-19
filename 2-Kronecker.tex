@@ -554,6 +554,20 @@
     if there exists $i\in I\setminus S_1$ such that $\#\{j\in S_1:j\notin I, j>i\} < \#\{j\in I:j\notin S_1,j>i\}$ and similarly for $J$.
   \end{proof}
 
+  The following formula is conjectured in \cite{rupel-weist}.
+  \begin{corollary}
+    Let $S_1\sqcup S_2$ be a successor-closed subset of the support quiver of $\tilde P_m$ with $|S_i|=e_i$.
+    Then the dimension of the attractor cell $\AA_{S_1}^{S_2}$ is given by $\sum\limits_{1 \le i < i' \le 2m-1}\overline{\gamma}_\omega(i,i')$ for
+    \begin{equation}
+      \overline{\gamma}_\omega(e,e')=\begin{cases}
+        -2 & \text{if $i\in \{2\ell-1\}\setminus S_1$ and $i'\in S_2$;}\\ 
+        1 & \text{if $i\in \{2\ell-1\}\setminus S_1$ and $i'\in S_1$;}\\ 
+        1 & \text{if $i\in \{2\ell\}\setminus S_2$ and $i'\in S_2$;}\\ 
+        0 & \text{otherwise;}\\ 
+      \end{cases}
+    \end{equation} 
+  \end{corollary}
+
 \section{Cell Closure Properties}
 
   \begin{itemize}
