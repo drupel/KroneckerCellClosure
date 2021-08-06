@@ -485,69 +485,69 @@
     \label{eq:right Plucker} \sum_{j\in \{2\ell\}\setminus J_2} (-1)^{\epsilon(j+1,J_1)+\epsilon(j,J_2)} \Delta_{J_1\setminus\{j+1\}} \Delta_{J_2\cup\{j\}}=0,
   \end{align}
   for each $J_1\subseteq\{2\ell-1\}$ with cardinality $e_1+1$ and each $J_2\subseteq\{2\ell\}$ with cardinality $e_2-1$.
-  In the equations above, we take $\Delta_J=0$ if $|I|=e_1+1$, i.e. when $j-1\notin J$ in \eqref{eq:left Plucker} or when $j+1\notin J$ in \eqref{eq:right Plucker}.
+  In the equations above, we take $\Delta_{J}=0$ if $|J|=e_1+1$, i.e. when $j-1\notin J_1$ in \eqref{eq:left Plucker} or when $j+1\notin J_1$ in \eqref{eq:right Plucker}.
   \begin{remark}
     \label{rm:linear terms}
     Note that, upon restriction to an attractor cell $\AA_{I_1}^{I_2}$, each quiver Pl\"ucker relation has either zero, one, or two linear terms since the restriction imposes $\Delta_{I_1}=\Delta_{I_2}=1$.
-    Thus necessary conditions for there to exist two linear terms in \eqref{eq:left Plucker} or \eqref{eq:right Plucker} are the containments $I_1\subseteq I$ and $J\subseteq I_2$.
-    Moreover, this condition precludes the possibility that a constant appears in a restricted quiver Pl\"ucker relation since $I\setminus\{j\pm1\}\equiv I_1$ and $J\cup\{j\}\equiv I_2$ are incompatible with the successor-closed requirement for the subquiver $I_1\sqcup I_2$ to label a cell in $Gr_\bfe(P_m)$.
+    Thus necessary conditions for there to exist two linear terms in \eqref{eq:left Plucker} or \eqref{eq:right Plucker} are the containments $I_1\subseteq J_1$ and $J_2\subseteq I_2$.
+    Moreover, this condition precludes the possibility that a constant appears in a restricted quiver Pl\"ucker relation since $J_1\setminus\{j\pm1\}\equiv I_1$ and $J_2\cup\{j\}\equiv I_2$ are incompatible with the successor-closed requirement for the subquiver $I_1\sqcup I_2$ to label a cell in $Gr_\bfe(P_m)$.
   \end{remark}
 
   \begin{lemma}
     The quiver Pl\"ucker relations \eqref{eq:left Plucker} and \eqref{eq:right Plucker} are invariant under the $\CC^*$-action on $Gr_\bfe(P_m)$
   \end{lemma}
   \begin{proof}
-    Indeed, the left hand side of relation \eqref{eq:left Plucker} is homogeneous of weight $-1 - \sum\limits_{i\in I} i - \sum\limits_{j\in J} j$.
-    Similarly, the right hand side of relation \eqref{eq:right Plucker} is homogeneous of weight $1 - \sum\limits_{i\in I} i - \sum\limits_{j\in J} j$.
+    Indeed, the left hand side of relation \eqref{eq:left Plucker} is homogeneous of weight $-1 - \sum\limits_{j\in J_1} j - \sum\limits_{j\in J_2} j$.
+    Similarly, the right hand side of relation \eqref{eq:right Plucker} is homogeneous of weight $1 - \sum\limits_{j\in J_1} j - \sum\limits_{j\in J_2} j$.
   \end{proof}
 
   \subsection{Torus action on $\CC[Gr_\bfe(P_m)]$}
-  The action of $\CC^*$ on $Gr_\bfe(P_m)$ induces an action on the quiver Pl\"ucker coordinates $\Delta_I$, $\Delta_J$ for $I\subseteq_{e_1} \{2k-1\}$ and $J\subseteq_{e_2} \{2k\}$.
+  The action of $\CC^*$ on $Gr_\bfe(P_m)$ induces an action on the quiver Pl\"ucker coordinates $\Delta_{J_1}$, $\Delta_{J_2}$ for $J_1\subseteq_{e_1} \{2k-1\}$ and $J_2\subseteq_{e_2} \{2k\}$.
 
 
   \subsection{Restriction to Cells}
 
   \begin{lemma}
     Let $I_1\sqcup I_2$ be a successor-closed subset of the support quiver of $\tilde P_m$ with $|I_i|=e_i$.
-    Given $I \subseteq_{e_1} \{2\ell-1\}$ (resp. $J \subseteq_{e_2} \{2\ell\}$), we have $\Delta_I\equiv 0$ (resp. $\Delta_J\equiv 0$) when restricted to the attractor cell $\AA_{I_1}^{I_2}$ if there exists $t\in I\setminus I_1$ such that $\#\{s\in I_1:s\notin I, s>t\} < \#\{s\in I:s\notin I_1, s \ge t\}$ (and similarly for $J$).
+    Given $J_1\subseteq_{e_1} \{2\ell-1\}$ (resp. $J_2\subseteq_{e_2} \{2\ell\}$), we have $\Delta_{J_1}\equiv 0$ (resp. $\Delta_{J_2}\equiv 0$) when restricted to the attractor cell $\AA_{I_1}^{I_2}$ if there exists $t\in J_1\setminus I_1$ such that $\#\{s\in I_1:s\notin J_1, s>t\} < \#\{s\in J_1:s\notin I_1, s \ge t\}$ (and similarly for $J_2$).
   \end{lemma}
   \begin{proof}
     This matches the same condition for vanishing of Pl\"ucker coordinates in ordinary Schubert cells.
   \end{proof}
   \begin{corollary}
     Let $I_1\sqcup I_2$ be a successor-closed subset of the support quiver of $\tilde P_m$ with $|I_i|=e_i$.
-    Given $I \subseteq_{e_1} \{2\ell-1\}$ with $I_1<I$ (resp. $J \subseteq_{e_2} \{2\ell\}$ with $I_2<J$), in reverse lexicographic ordering, we have $\Delta_I \equiv 0$ (resp. $\Delta_J\equiv 0$) when restricted to the attractor cell $\AA_{I_1}^{I_2}$.
+    Given $J_1 \subseteq_{e_1} \{2\ell-1\}$ with $I_1<J_1$ (resp. $J_2 \subseteq_{e_2} \{2\ell\}$ with $I_2<J_2$), in reverse lexicographic ordering, we have $\Delta_{J_1} \equiv 0$ (resp. $\Delta_{J_2}\equiv 0$) when restricted to the attractor cell $\AA_{I_1}^{I_2}$.
   \end{corollary}
 
   The following describes those quiver Pl\"ucker relations with two linear terms over $\AA_{I_1}^{I_2}$.
   \begin{lemma}
     Let $I_1\sqcup I_2$ be a successor-closed subset of the support quiver of $\tilde P_m$ with associated fixed point $E$ and $\bar{I}_1\sqcup\bar{I}_2$ the predecessor-closed subset associated with $P_m/E$.
-    The subsets $I\subseteq\{2\ell-1\}$ with cardinality $e_1+1$ and $J\subseteq\{2\ell\}$ with cardinality $e_2-1$ for which the quiver Pl\"ucker relation \eqref{eq:left Plucker} (resp. \eqref{eq:right Plucker}) has two linear terms are precisely those of the form
-    \[I=I_1\cup\{\sigma_\ell(s-1)\} \qquad \text{and} \qquad J=I_2\setminus\{s\}\]
-    (resp. $I=I_1\cup\{\sigma_\ell(s+1)\}$ and $J=I_2\setminus\{s\}$), where $s\in I_2$ and $\sigma_\ell(t)=t-\ell$ for $\ell\ge1$ with $\sigma_\ell(s)\in\bar{I}_2$ and $\sigma_\ell(s-1)\in\bar{I}_1$ (resp. $\sigma_\ell(s+1)\in\bar{I}_1$).
-    In this case, quiver Pl\"ucker relation \eqref{eq:left Plucker} (resp. \eqref{eq:right Plucker}) contains the two linear terms $\Delta_{I\setminus\{s-1\}\cup\{\sigma_\ell(s-1)\}}$ (resp. $\Delta_{I\setminus\{s+1\}\cup\{\sigma_\ell(s+1)\}}$) and $\Delta_{J\setminus\{s\}\cup\{\sigma_\ell(s)\}}$.
+    The subsets $J_1\subseteq\{2\ell-1\}$ with cardinality $e_1+1$ and $J_2\subseteq\{2\ell\}$ with cardinality $e_2-1$ for which the quiver Pl\"ucker relation \eqref{eq:left Plucker} (resp. \eqref{eq:right Plucker}) has two linear terms are precisely those of the form
+    \[J_1=I_1\cup\{\sigma_\ell(s-1)\} \qquad \text{and} \qquad J_2=I_2\setminus\{s\}\]
+    (resp. $J_1=I_1\cup\{\sigma_\ell(s+1)\}$ and $J_2=I_2\setminus\{s\}$), where $s\in I_2$ and $\sigma_\ell(t)=t-\ell$ for $\ell\ge1$ with $\sigma_\ell(s)\in\bar{I}_2$ and $\sigma_\ell(s-1)\in\bar{I}_1$ (resp. $\sigma_\ell(s+1)\in\bar{I}_1$).
+    In this case, quiver Pl\"ucker relation \eqref{eq:left Plucker} (resp. \eqref{eq:right Plucker}) contains the two linear terms $\Delta_{J_1\setminus\{s-1\}\cup\{\sigma_\ell(s-1)\}}$ (resp. $\Delta_{J_1\setminus\{s+1\}\cup\{\sigma_\ell(s+1)\}}$) and $\Delta_{J_2\setminus\{s\}\cup\{\sigma_\ell(s)\}}$.
   \end{lemma}
   \begin{proof}
     Observe first that indeed the quiver Pl\"ucker relations given above have two linear terms since $s\pm1\in I_1$ for $s\in I_2$ while the conditions on the shift $\ell$ imply $\sigma_\ell(s\pm1)\notin I_1$ and $\sigma_\ell(s)\notin I_2$ with $\Delta_{I_1\setminus\{s\pm1\}\cup\{\sigma_\ell(s\pm1)\}}$ and $\Delta_{I_2\setminus\{s\}\cup\{\sigma_\ell(s)\}}$ not identically zero on $\AA_{I_1}^{I_2}$.
 
-    Now consider subsets $I$ and $J$ with $I_1\subseteq I$ and $J\subseteq I_2$ for which a quiver Pl\"ucker relation \eqref{eq:left Plucker} or \eqref{eq:right Plucker} has two linear terms.
+    Now consider subsets $J_1$ and $J_2$ with $I_1\subseteq J_1$ and $J_2\subseteq I_2$ for which a quiver Pl\"ucker relation \eqref{eq:left Plucker} or \eqref{eq:right Plucker} has two linear terms.
     Set $\varepsilon=-1$ if this relation comes from \eqref{eq:left Plucker} and set $\varepsilon=+1$ if this relation comes from \eqref{eq:right Plucker}.
-    Let $t+\varepsilon$ denote the unique element in $I\setminus I_1$ and let $s$ denote the unique element in $I_2\setminus J$.
-    By assumption, the term $\Delta_{I\setminus\{t+\varepsilon\}} \Delta_{J\cup\{t\}}$ must be linear and so the minor $\Delta_{J\cup\{t\}}$ cannot be identically zero nor identically one on $\AA_{I_1}^{I_2}$ following Remark~\ref{rm:linear terms}.
+    Let $t+\varepsilon$ denote the unique element in $J_1\setminus I_1$ and let $s$ denote the unique element in $I_2\setminus J_2$.
+    By assumption, the term $\Delta_{J_1\setminus\{t+\varepsilon\}} \Delta_{J_2\cup\{t\}}$ must be linear and so the minor $\Delta_{J_2\cup\{t\}}$ cannot be identically zero nor identically one on $\AA_{I_1}^{I_2}$ following Remark~\ref{rm:linear terms}.
     This forces $t<s$ and $t\in\bar{I_2}$.
-    Similar consideration with the term $\Delta_{I\setminus\{s+\varepsilon\}} \Delta_{J\cup\{s\}}$ show that $s+\varepsilon\in\bar{I}_1$.
-    Thus we may set $\ell=s-t$ and construct the sets $I$ and $J$ as above.
+    Similar consideration with the term $\Delta_{J_1\setminus\{s+\varepsilon\}} \Delta_{J_2\cup\{s\}}$ show that $s+\varepsilon\in\bar{I}_1$.
+    Thus we may set $\ell=s-t$ and construct the sets $J_1$ and $J_2$ as above.
   \end{proof}
 
   The next two results describe those quiver Pl\"ucker relations with only one linear term over $\AA_{I_1}^{I_2}$.
   \begin{lemma}
-    Upon restriction to $\AA_{I_1}^{I_2}$, a minor $\Delta_I$ (resp. $\Delta_J$) is the sole linear term in a quiver Pl\"ucker relation if it is not identically zero on $\AA_{I_1}^{I_2}$ and differs from $I_1$ (resp. $I_2$) in at least two places.
+    Upon restriction to $\AA_{I_1}^{I_2}$, a minor $\Delta_{J_1}$ (resp. $\Delta_{J_2}$) is the sole linear term in a quiver Pl\"ucker relation if it is not identically zero on $\AA_{I_1}^{I_2}$ and differs from $I_1$ (resp. $I_2$) in at least two places.
   \end{lemma}
 
   \begin{lemma}
     Let $I_1\sqcup I_2$ be a successor-closed subset of the support quiver of $\tilde P_m$ with $|I_i|=e_i$.
-    Given $I \subseteq_{e_1} \{2\ell-1\}$ (resp. $J \subseteq_{e_2} \{2\ell\}$) with $|I\setminus I_1|\ge2$ and $\Delta_I\not\equiv 0$ on $\AA_{I_1}^{I_2}$ (resp. $|J\setminus I_2|\ge 2$ and $\Delta_J\not\equiv 0$ on $\AA_{I_1}^{I_2}$), there exists a standard Pl\"ucker relation in which $\Delta_I$ (resp. $\Delta_J$) is the sole linear term.
-    Moreover, in any such Pl\"ucker relation every other Pl\"ucker coordinate $\Delta_{I'}$ (resp. $\Delta_{J'}$) appearing in the relation satisfies $I<I'$ (resp. $J<J'$) in the reverse lexicographic ordering.
+    Given $J_1 \subseteq_{e_1} \{2\ell-1\}$ (resp. $J_2 \subseteq_{e_2} \{2\ell\}$) with $|J_1\setminus I_1|\ge2$ and $\Delta_{J_1}\not\equiv 0$ on $\AA_{I_1}^{I_2}$ (resp. $|J_2\setminus I_2|\ge 2$ and $\Delta_{J_2}\not\equiv 0$ on $\AA_{I_1}^{I_2}$), there exists a standard Pl\"ucker relation in which $\Delta_{J_1}$ (resp. $\Delta_{J_2}$) is the sole linear term.
+    Moreover, in any such Pl\"ucker relation every other Pl\"ucker coordinate $\Delta_{J'_1}$ (resp. $\Delta_{J'_2}$) appearing in the relation satisfies $J_1<J'_1$ (resp. $J_2<J'_2$) in the reverse lexicographic ordering.
   \end{lemma}
   \begin{lemma}
     \mbox{}
@@ -563,7 +563,7 @@
     \end{enumerate}
   \end{lemma}
   \begin{proof}
-    Take $I=I_1\cup\{1\}$ and $J=I_2\setminus\{s\}$ in the quiver Pl\"ucker relation \eqref{eq:right Plucker}.
+    Take $J_1=I_1\cup\{1\}$ and $J_2=I_2\setminus\{s\}$ in the quiver Pl\"ucker relation \eqref{eq:right Plucker}.
   \end{proof}
 
   \begin{lemma}
@@ -588,22 +588,22 @@
 
   \begin{lemma}
     Let $I_1\sqcup I_2$ be a successor-closed subset of the support quiver of $\tilde P_m$ with associated fixed point $E$.
-    There exists $I\subseteq\{2\ell-1\}$ with cardinality $e_1+1$ and each $J\subseteq\{2\ell\}$ with cardinality $e_2-1$ such that $I_1\subseteq I$ and $J\subseteq I_2$ if and only if
+    There exists $J_1\subseteq\{2\ell-1\}$ with cardinality $e_1+1$ and each $J_2\subseteq\{2\ell\}$ with cardinality $e_2-1$ such that $I_1\subseteq J_1$ and $J_2\subseteq I_2$ if and only if
   \end{lemma}
 
   \begin{theorem}
     Let $I_1\sqcup I_2$ be a successor-closed subset of the support quiver of $\tilde P_m$ with $|I_i|=e_i$.
     Then the attractor cell $\AA_{I_1}^{I_2}$ is parametrized as an affine space by the Pl\"ucker coordinates
     \begin{itemize}
-      \item $\Delta_J$ for $J=I_2\setminus\{s\}\cup\{t\}$ with $s\in I_2$, $t\in\bar{I}_2$, and $t<s$;
-      \item $\Delta_I$ for $I=???$
+      \item $\Delta_{J_2}$ for $J_2=I_2\setminus\{s\}\cup\{t\}$ with $s\in I_2$, $t\in\bar{I}_2$, and $t<s$;
+      \item $\Delta_{J_1}$ for $J_1=???$
     \end{itemize}
   \end{theorem}
   \begin{proof}
     By construction, upon restriction to $\AA_{I_1}^{I_2}$ we have $\Delta_{I_1}\equiv 1$, $\Delta_{I_2}\equiv 1$.
     Also,
-    \[\Delta_I\equiv 0 \qquad \Delta_J\equiv 0\]
-    if there exists $i\in I\setminus I_1$ such that $\#\{j\in I_1:j\notin I, j>i\} < \#\{j\in I:j\notin I_1,j>i\}$ and similarly for $J$.
+    \[\Delta_{J_1}\equiv 0 \qquad \Delta_{J_2}\equiv 0\]
+    if there exists $i\in J_1\setminus I_1$ such that $\#\{j\in I_1:j\notin J_1, j>i\} < \#\{j\in J_1:j\notin I_1,j>i\}$ and similarly for $J_2$.
   \end{proof}
 
   The following formula is conjectured in \cite{rupel-weist}.
